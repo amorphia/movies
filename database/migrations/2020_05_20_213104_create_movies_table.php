@@ -22,6 +22,7 @@ class CreateMoviesTable extends Migration
             $table->string( 'release' )->nullable();
             $table->string( 'type' )->default( 'theater' );
             $table->timestamps();
+            $table->index(['title', 'year']);
         });
     }
 

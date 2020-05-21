@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends( 'layout' )
 
-        <title>Laravel</title>
+@section( 'page', 'landing' )
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section( 'content' )
 
-    </head>
-    <body>
-       <h1>Movie Tracker</h1>
-       <form>
-           <div class="form-group row">
-               <div class="col-md-6 offset-md-4">
-                   <a href="{{ url('/login/facebook') }}" class="btn btn-facebook"> Facebook</a>
 
-               </div>
-           </div>
-       </form>
-    </body>
-</html>
+
+<main class='splash-logo mt-6 width-80 center-text pull-center d-flex flex-column'>
+
+    <h1>MOVIE CHECKLIST</h1>
+
+    <div class="p-5 width-30 pull-center">
+        <a class="btn register-button mb-3 d-block" href="{{ route( 'login') }}">LOGIN</a>
+        <a class="btn register-button d-block" href="{{ route( 'register') }}">REGISTER</a>
+    </div>
+
+</main>
+
+<figure class="splash-logo-wrap pos-cover overflow-hidden" style="background-image: url( '/images/posters/{{ rand ( 1 , 6 )  }}.jpg')"></figure>
+
+
+
+@endsection

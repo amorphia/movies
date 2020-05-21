@@ -1,0 +1,35 @@
+
+body.landing {
+    background-color: var(--primary-color);
+    color: white;
+    height:100%;
+    width:100%;
+
+    h1 {
+        font-family: 'teko';
+        letter-spacing: 1.5vw;
+        font-size: 16vw;
+        line-height: .7em;
+    }
+
+}
+
+.splash-logo-wrap {
+    filter: blur(0px);
+    opacity: 0.4;
+    position: fixed;
+    z-index: -1;
+}
+
+
+.splash-logo {
+    z-index: 2;
+}
+
+.register-button {
+    top: 1vw;
+    right: 1vw;
+    font-family: var(--accent-font);
+    background-color: tomato;
+    padding: .75vw 1vw.5vw 1vw;
+}

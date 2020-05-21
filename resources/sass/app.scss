@@ -1,8 +1,15 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'icomoon/style.css';
+@import 'partials/reset';
+@import 'partials/variables';
+@import 'partials/mq';
+@import 'partials/animations';
+@import 'partials/utility';
+@import 'partials/forms';
+@import 'partials/transitions';
+@import 'landing';
 
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+body {
+    background-color: var(--near-white);
+    font-size: 2.5vw;
+    font-family: var(--primary-font);
+}
