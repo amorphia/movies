@@ -53,7 +53,9 @@ window.Moment = require('moment');
 
 window.Vue2TouchEvents = require('vue2-touch-events');
 
-Vue.use( Vue2TouchEvents );
+Vue.use( Vue2TouchEvents, {
+    swipeTolerance: 100,
+})
 
 
 /**

@@ -56283,7 +56283,9 @@ window.Moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.
  */
 
 window.Vue2TouchEvents = __webpack_require__(/*! vue2-touch-events */ "./node_modules/vue2-touch-events/index.js");
-Vue.use(Vue2TouchEvents);
+Vue.use(Vue2TouchEvents, {
+  swipeTolerance: 100
+});
 /**
  * Scroll To
  */
