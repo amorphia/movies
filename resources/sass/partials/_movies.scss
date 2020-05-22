@@ -70,6 +70,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        width: 100%;
         z-index:2;
         font-family: var(--secondary-font);
         letter-spacing: 1px;
@@ -83,15 +84,12 @@
         }
     }
 
-
-
     .movie__link {
         color: #FB9380;
         position: absolute;
         font-size: 1.4vw;
         padding: .5vw;
         left: 0;
-        width: 100%;
         background-color: rgba(0,0,0,.1);
         height: 100%;
         top: 0;
