@@ -72,7 +72,7 @@ class Scraper
         // filter out da junk
         if( $rank > 300
             || $node->filter( 'span.a-size-small' )->count() > 0
-            || $theaters < 50  ) return;
+            || $theaters < 35  ) return;
 
         // return the movie array
         return [
