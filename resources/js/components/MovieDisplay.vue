@@ -40,7 +40,7 @@
         data() {
             return {
                 shared : App.state,
-                bufferYears : 1
+                bufferYears : 2
             };
         },
 

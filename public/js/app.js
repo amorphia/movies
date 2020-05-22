@@ -1992,7 +1992,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   data: function data() {
     return {
       shared: App.state,
-      bufferYears: 1
+      bufferYears: 2
     };
   },
   created: function created() {
