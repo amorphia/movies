@@ -1,6 +1,6 @@
 
 .movie-display {
-    padding: 8vw 3.5vw 1.5vw ;
+    padding: 8vw 2.5vw 1.5vw ;
 }
 
 .movie-list {
@@ -150,7 +150,7 @@
 .hover-nav {
     pointer-events: initial;
     position: fixed;
-    width: 7%;
+    width: 4%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -166,7 +166,6 @@
         border-radius: 50%;
         height: 4vw;
         width: 4vw;
-
         background-color: var(--dark-grey);
         opacity: 0;
         transition: opacity .4s;
@@ -175,8 +174,13 @@
         cursor:pointer;
         animation: ripple 1s ease-in infinite;
         font-size: 3vw;
-
+        left: 75%;
     }
+
+    &.right-hover-nav .hover-arrow {
+            left: 25%;
+    }
+
 
     &:hover .hover-arrow {
         opacity: 1;
