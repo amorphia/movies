@@ -1,11 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Weidner\Goutte;
-use App\Movie;
-use Illuminate\Support\Facades\DB;
-use App\Services\Scraper;
-
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +12,12 @@ use App\Services\Scraper;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get( 'test', function (){
+    Mail::raw('Test', function ( $message ){
+        $message->to('jeremy@jeremykalgreen.com');
+    });
+});
 
 // Landing
 Route::get('/', 'LandingController@index' );
