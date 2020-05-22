@@ -1,6 +1,10 @@
 
 .movie-display {
-    padding: 8vw 2.5vw 1.5vw ;
+    padding: 7.8rem 2rem 1.5rem ;
+
+    @include mobile {
+        padding: 7.8rem .1rem .75rem;
+    }
 }
 
 .movie-list {
@@ -9,7 +13,7 @@
 }
 
 .year-wrap {
-    padding: 1vw;
+    padding: .5rem;
 }
 
 .year-wrap__content {
@@ -18,38 +22,47 @@
     width: 100%;
     position: relative;
     background-color: var(--dark-color);
-    padding: 2vw;
+    padding: 1.8rem;
     font-family: var(--accent-font);
     border-bottom: 1px #0A0A0A solid;
     border-top: 1px solid #252525;
     color: var(--highlight-color);
-    font-size: 3vw;
+    font-size: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+
+    @include mobile {
+        padding: 1.3rem;
+    }
 }
 
 .year-wrap__seen {
     color: var(--off-white);
-    font-size: 1.1vw;
+    font-size: 1rem;
     letter-spacing: 1px;
 }
 
 .year-wrap__seen-number {
     color: var(--highlight-color);
-    font-size: 2vw;
+    font-size: 2rem;
 }
 
 
 .movie-wrap {
     width: 25%;
-    padding: 1vw;
+    padding: .8rem;
+
+    @include mobile {
+        width: 100%;
+        padding: .5rem;
+    }
 }
 
 .movie {
     width: 100%;
-    padding: .9vw 1vw .9vw 3vw;
+    padding: 1.2rem .9rem 1.2rem 2.8rem;
     box-shadow: 0 1px 3px rgba(0,0,0,.3);
     background-color: var(--primary-color);
     display: flex;
@@ -59,11 +72,9 @@
     overflow:hidden;
 
 
-
     @include mobile {
-        width: 100%;
-        padding: 0 3vw 0 12vw;
         box-shadow: none;
+        padding: 1.2rem .9rem 1.2rem 3.4rem;
     }
 
     .movie__title {
@@ -71,24 +82,22 @@
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
-        z-index:2;
+        z-index: 2;
         font-family: var(--secondary-font);
         letter-spacing: 1px;
-        padding: .5vw 0;
-        font-size: 1.2vw;
+        padding: .5rem 0;
+        font-size: 1.2rem;
         cursor: pointer;
 
         @include mobile{
-            font-size: 5vw;
-            padding: 5.8vw 0;
         }
     }
 
     .movie__link {
         color: #FB9380;
         position: absolute;
-        font-size: 1.4vw;
-        padding: .5vw;
+        font-size: 1.2rem;
+        padding: .5rem;
         left: 0;
         background-color: rgba(0,0,0,.1);
         height: 100%;
@@ -97,8 +106,7 @@
         align-items: center;
 
         @include mobile {
-            padding: 2vw;
-            font-size: 5.4vw;
+            padding: .5rem .75rem;
         }
     }
 
@@ -112,19 +120,16 @@
         transform: translateY(-50%);
         padding: 0;
         right: 0;
-        font-size: 7vw;
-        margin-top: .55vw;
+        font-size: 7rem;
+        margin-top: .5rem;
 
         @include mobile{
-            margin-top: 2vw;
-            font-size: 27vw;
-            right: .5vw;
         }
     }
 
     &.active {
 
-        background-color:  rgb(244,244,244);
+        background-color: rgb(244,244,244);
 
         .movie__title {
             color: #525151;
@@ -148,12 +153,16 @@
 .hover-nav {
     pointer-events: initial;
     position: fixed;
-    width: 4%;
+    width: 3%;
     top: 0;
     bottom: 0;
     left: 0;
     z-index:3;
     display:initial;
+
+    @include mobile {
+        display: none;
+    }
 
     &.right-hover-nav {
         left:inherit;

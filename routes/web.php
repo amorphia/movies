@@ -13,16 +13,12 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get( 'test', function (){
-    Mail::raw('Test', function ( $message ){
-        $message->to('jeremy@jeremykalgreen.com');
-    });
-});
 
 // Landing
 Route::get('/', 'LandingController@index' );
 
 Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout' );
 
 Route::get('login/{provider}', 'Auth\LoginController@redirect');
 Route::get('login/{provider}/callback','Auth\LoginController@Callback');

@@ -21,8 +21,8 @@
     </div>
 
     <section class="movie-list width-100 pos-relative">
-        <div v-for="(movie, index) in filteredMovies" class='movie-wrap'>
-            <div class="movie" :id="`movie-${movie.id}`" :class="{ active : movie.active }" :data-rank=" index + 1">
+        <div v-for="movie in filteredMovies" class='movie-wrap'>
+            <div class="movie" :id="`movie-${movie.id}`" :class="{ active : movie.active }" :data-rank="movie.rank">
                 <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
                 <a title='IMDB Link' :href="`https://duckduckgo.com/?q=\\imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
             </div>
@@ -158,6 +158,8 @@
                     this.loadYears( yearsToLoad, movie );
                 } else if( movie ){
                     this.scrollTo( `movie-${movie.id}`);
+                } else {
+                    this.scrollTo( 'top' );
                 }
             },
 
@@ -174,8 +176,10 @@
                 axios.post( '/movies/fetch', { years : years })
                     .then( response => {
 
-                        console.log( response.data );
                         for( let year in response.data ){
+
+                            response.data[ year ].forEach( ( item, index ) => item.rank = index + 1 );
+
                             this.shared.movies[ year ] = response.data[ year ];
                         }
 
@@ -183,6 +187,8 @@
                             Vue.nextTick( () => {
                                 this.scrollTo( `movie-${movie.id}`);
                             });
+                        } else {
+                            this.scrollTo( 'top' );
                         }
                     })
                     .catch( errors => console.log( errors ) )

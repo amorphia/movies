@@ -10,8 +10,15 @@
 @import 'partials/movies';
 @import 'partials/nav';
 
+:root {
+    font-size: 1vw;
+
+    @include mobile {
+        font-size: 3.5vw;
+    }
+}
+
 body {
     background-color: var(--near-white);
-    font-size: 1.2vw;
     font-family: var(--primary-font);
 }

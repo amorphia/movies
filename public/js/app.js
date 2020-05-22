@@ -2110,6 +2110,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.loadYears(yearsToLoad, movie);
       } else if (movie) {
         this.scrollTo("movie-".concat(movie.id));
+      } else {
+        this.scrollTo('top');
       }
     },
     scrollTo: function scrollTo(id) {
@@ -2124,9 +2126,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       axios.post('/movies/fetch', {
         years: years
       }).then(function (response) {
-        console.log(response.data);
-
         for (var year in response.data) {
+          response.data[year].forEach(function (item, index) {
+            return item.rank = index + 1;
+          });
           _this.shared.movies[year] = response.data[year];
         }
 
@@ -2134,6 +2137,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           Vue.nextTick(function () {
             _this.scrollTo("movie-".concat(movie.id));
           });
+        } else {
+          _this.scrollTo('top');
         }
       })["catch"](function (errors) {
         return console.log(errors);
@@ -2182,6 +2187,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-search',
   data: function data() {
@@ -2190,7 +2199,8 @@ __webpack_require__.r(__webpack_exports__);
       selectedItem: -1,
       results: null,
       axiosCancelToken: null,
-      axiosSource: null
+      axiosSource: null,
+      openSearch: false
     };
   },
   created: function created() {
@@ -2204,6 +2214,20 @@ __webpack_require__.r(__webpack_exports__);
     }, 200);
   },
   methods: {
+    setSearchOpen: function setSearchOpen() {
+      var _this2 = this;
+
+      this.openSearch = true;
+      this.$nextTick(function () {
+        _this2.$refs.search.focus();
+      });
+    },
+    reset: function reset() {
+      this.query = '';
+      this.results = null;
+      this.selectedItem = -1;
+      this.openSearch = false;
+    },
     navigateList: function navigateList(increment) {
       this.selectedItem += increment;
 
@@ -2225,12 +2249,10 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       App.event.event('setYear', movie);
-      this.query = '';
-      this.results = null;
-      this.selectedItem = -1;
+      this.reset();
     },
     makeRequestCreator: function makeRequestCreator() {
-      var _this2 = this;
+      var _this3 = this;
 
       var call;
       return function () {
@@ -2240,13 +2262,13 @@ __webpack_require__.r(__webpack_exports__);
 
         call = axios.CancelToken.source();
         return axios.post('/movies/search', {
-          searchTerm: _this2.query
+          searchTerm: _this3.query
         }, {
           cancelToken: call.token
         }).then(function (response) {
-          _this2.results = response.data;
+          _this3.results = response.data;
 
-          _this2.navigateList(0);
+          _this3.navigateList(0);
         })["catch"](function (errors) {
           console.log(errors);
         });
@@ -2267,11 +2289,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MovieSearch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MovieSearch */ "./resources/js/components/MovieSearch.vue");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -42024,14 +42041,14 @@ var render = function() {
     _c(
       "section",
       { staticClass: "movie-list width-100 pos-relative" },
-      _vm._l(_vm.filteredMovies, function(movie, index) {
+      _vm._l(_vm.filteredMovies, function(movie) {
         return _c("div", { staticClass: "movie-wrap" }, [
           _c(
             "div",
             {
               staticClass: "movie",
               class: { active: movie.active },
-              attrs: { id: "movie-" + movie.id, "data-rank": index + 1 }
+              attrs: { id: "movie-" + movie.id, "data-rank": movie.rank }
             },
             [
               _c("div", {
@@ -42089,88 +42106,111 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "nav-search nav__item grow-2 pos-relative",
+      staticClass: "nav-search nav__item grow-2",
       attrs: { title: "Search movies" }
     },
     [
-      _c("i", { staticClass: "nav__icon icon-search" }),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.query,
-            expression: "query"
-          }
-        ],
-        staticClass: "nav__input search-input",
-        attrs: { placeholder: "Search...", type: "text" },
-        domProps: { value: _vm.query },
-        on: {
-          input: [
-            function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.query = $event.target.value
-            },
-            _vm.searchChange
-          ],
-          keydown: [
-            function($event) {
-              if (
-                !$event.type.indexOf("key") &&
-                _vm._k($event.keyCode, "down", 40, $event.key, [
-                  "Down",
-                  "ArrowDown"
-                ])
-              ) {
-                return null
-              }
-              return _vm.navigateList(+1)
-            },
-            function($event) {
-              if (
-                !$event.type.indexOf("key") &&
-                _vm._k($event.keyCode, "up", 38, $event.key, ["Up", "ArrowUp"])
-              ) {
-                return null
-              }
-              return _vm.navigateList(-1)
-            }
-          ],
-          keyup: function($event) {
-            if (
-              !$event.type.indexOf("key") &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            return _vm.jumpToMovie("selected")
-          }
-        }
+      _c("i", {
+        staticClass: "nav__icon icon-search",
+        on: { click: _vm.setSearchOpen }
       }),
       _vm._v(" "),
-      _vm.results
-        ? _c(
-            "div",
-            { staticClass: "autocomplete pos-absolute width-100" },
-            _vm._l(_vm.results, function(movie, index) {
-              return _c("div", {
-                staticClass: "autocomplete__item ellipses",
-                class: { selected: _vm.selectedItem === index },
-                domProps: { textContent: _vm._s(movie.title) },
-                on: {
-                  click: function($event) {
-                    return _vm.jumpToMovie(movie)
+      _c(
+        "div",
+        {
+          staticClass: "nav-search-wrap width-100 d-flex align-center",
+          class: { open: _vm.openSearch }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.query,
+                expression: "query"
+              }
+            ],
+            ref: "search",
+            staticClass: "nav__input search-input",
+            attrs: { placeholder: "Search...", type: "text" },
+            domProps: { value: _vm.query },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
+                  _vm.query = $event.target.value
+                },
+                _vm.searchChange
+              ],
+              keydown: [
+                function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "down", 40, $event.key, [
+                      "Down",
+                      "ArrowDown"
+                    ])
+                  ) {
+                    return null
+                  }
+                  return _vm.navigateList(+1)
+                },
+                function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "up", 38, $event.key, [
+                      "Up",
+                      "ArrowUp"
+                    ])
+                  ) {
+                    return null
+                  }
+                  return _vm.navigateList(-1)
                 }
+              ],
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.jumpToMovie("selected")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.openSearch || _vm.query
+            ? _c("i", {
+                staticClass: "nav-search-close icon-x pointer",
+                on: { click: _vm.reset }
               })
-            }),
-            0
-          )
-        : _vm._e()
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.results
+            ? _c(
+                "div",
+                { staticClass: "autocomplete pos-absolute width-100" },
+                _vm._l(_vm.results, function(movie, index) {
+                  return _c("div", {
+                    staticClass: "autocomplete__item ellipses",
+                    class: { selected: _vm.selectedItem === index },
+                    domProps: { textContent: _vm._s(movie.title) },
+                    on: {
+                      click: function($event) {
+                        return _vm.jumpToMovie(movie)
+                      }
+                    }
+                  })
+                }),
+                0
+              )
+            : _vm._e()
+        ]
+      )
     ]
   )
 }
@@ -42238,8 +42278,6 @@ var render = function() {
             "nav d-flex pos-fixed width-100 align-stretch justify-center"
         },
         [
-          _vm._m(0),
-          _vm._v(" "),
           _c(
             "div",
             {
@@ -42256,7 +42294,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "view-year nav__item grow-2",
+              staticClass: "view-year nav__item grow-2 pos-relative",
               attrs: { title: "Switch years" }
             },
             [
@@ -42266,7 +42304,7 @@ var render = function() {
                 ? _c(
                     "select",
                     {
-                      staticClass: "nav__input year-select",
+                      staticClass: "nav__input mobile-cover year-select",
                       domProps: { value: _vm.shared.currentYear },
                       on: { change: _vm.setYear }
                     },
@@ -42303,7 +42341,7 @@ var render = function() {
                       expression: "shared.filter"
                     }
                   ],
-                  staticClass: "nav__input nav-select",
+                  staticClass: "nav__input nav-select mobile-cover",
                   on: {
                     change: function($event) {
                       var $$selectedVal = Array.prototype.filter
@@ -42348,16 +42386,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "view-menu nav__item mobile-only" }, [
-      _c("i", { staticClass: "nav__icon icon-menu" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

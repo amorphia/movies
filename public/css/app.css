@@ -1402,14 +1402,22 @@ body.landing {
   width: 100%;
 }
 
-body.landing h1 {
+.splash h1 {
   font-family: "teko";
-  letter-spacing: 1.5vw;
-  font-size: 16vw;
+  letter-spacing: 1.5rem;
+  font-size: 15rem;
   line-height: 0.7em;
 }
 
-.splash-logo-wrap {
+@media (max-width: 767px) {
+  .splash h1 {
+    font-size: 5.5rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+  }
+}
+
+.splash__background {
   -webkit-filter: blur(0px);
           filter: blur(0px);
   opacity: 0.4;
@@ -1417,20 +1425,37 @@ body.landing h1 {
   z-index: -1;
 }
 
-.splash-logo {
-  z-index: 2;
+@media (max-width: 767px) {
+  .splash__buttons {
+    width: 80%;
+  }
 }
 
-.register-button {
-  top: 1vw;
-  right: 1vw;
+.splash__button {
   font-family: var(--accent-font);
   background-color: tomato;
-  padding: 0.75vw 1vw 0.5vw 1vw;
+  padding: 0.75rem 1rem 0.5rem 1rem;
+}
+
+@media (max-width: 767px) {
+  .splash__button {
+    font-size: 2.5rem;
+  }
+
+  .splash__button:first-of-type {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .movie-display {
-  padding: 8vw 2.5vw 1.5vw;
+  padding: 7.8rem 2rem 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .movie-display {
+    padding: 7.8rem 0.1rem 0.75rem;
+  }
 }
 
 .movie-list {
@@ -1439,7 +1464,7 @@ body.landing h1 {
 }
 
 .year-wrap {
-  padding: 1vw;
+  padding: 0.5rem;
 }
 
 .year-wrap__content {
@@ -1448,37 +1473,50 @@ body.landing h1 {
   width: 100%;
   position: relative;
   background-color: var(--dark-color);
-  padding: 2vw;
+  padding: 1.8rem;
   font-family: var(--accent-font);
   border-bottom: 1px #0A0A0A solid;
   border-top: 1px solid #252525;
   color: var(--highlight-color);
-  font-size: 3vw;
+  font-size: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 767px) {
+  .year-wrap__content {
+    padding: 1.3rem;
+  }
+}
+
 .year-wrap__seen {
   color: var(--off-white);
-  font-size: 1.1vw;
+  font-size: 1rem;
   letter-spacing: 1px;
 }
 
 .year-wrap__seen-number {
   color: var(--highlight-color);
-  font-size: 2vw;
+  font-size: 2rem;
 }
 
 .movie-wrap {
   width: 25%;
-  padding: 1vw;
+  padding: 0.8rem;
+}
+
+@media (max-width: 767px) {
+  .movie-wrap {
+    width: 100%;
+    padding: 0.5rem;
+  }
 }
 
 .movie {
   width: 100%;
-  padding: 0.9vw 1vw 0.9vw 3vw;
+  padding: 1.2rem 0.9rem 1.2rem 2.8rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   background-color: var(--primary-color);
   display: flex;
@@ -1490,9 +1528,8 @@ body.landing h1 {
 
 @media (max-width: 767px) {
   .movie {
-    width: 100%;
-    padding: 0 3vw 0 12vw;
     box-shadow: none;
+    padding: 1.2rem 0.9rem 1.2rem 3.4rem;
   }
 }
 
@@ -1504,23 +1541,16 @@ body.landing h1 {
   z-index: 2;
   font-family: var(--secondary-font);
   letter-spacing: 1px;
-  padding: 0.5vw 0;
-  font-size: 1.2vw;
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
   cursor: pointer;
-}
-
-@media (max-width: 767px) {
-  .movie .movie__title {
-    font-size: 5vw;
-    padding: 5.8vw 0;
-  }
 }
 
 .movie .movie__link {
   color: #FB9380;
   position: absolute;
-  font-size: 1.4vw;
-  padding: 0.5vw;
+  font-size: 1.2rem;
+  padding: 0.5rem;
   left: 0;
   background-color: rgba(0, 0, 0, 0.1);
   height: 100%;
@@ -1531,8 +1561,7 @@ body.landing h1 {
 
 @media (max-width: 767px) {
   .movie .movie__link {
-    padding: 2vw;
-    font-size: 5.4vw;
+    padding: 0.5rem 0.75rem;
   }
 }
 
@@ -1546,16 +1575,8 @@ body.landing h1 {
   transform: translateY(-50%);
   padding: 0;
   right: 0;
-  font-size: 7vw;
-  margin-top: 0.55vw;
-}
-
-@media (max-width: 767px) {
-  .movie:after {
-    margin-top: 2vw;
-    font-size: 27vw;
-    right: 0.5vw;
-  }
+  font-size: 7rem;
+  margin-top: 0.5rem;
 }
 
 .movie.active {
@@ -1580,12 +1601,18 @@ body.landing h1 {
 .hover-nav {
   pointer-events: initial;
   position: fixed;
-  width: 4%;
+  width: 3%;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 3;
   display: initial;
+}
+
+@media (max-width: 767px) {
+  .hover-nav {
+    display: none;
+  }
 }
 
 .hover-nav.right-hover-nav {
@@ -1620,46 +1647,67 @@ body.landing h1 {
 .nav {
   top: 0;
   z-index: 4;
-  padding: 1.4vw 2vw;
+  padding: 1.2rem 1.8rem;
   background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.01);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.nav.closed {
-  transform: translateY(-100%);
+@media (max-width: 767px) {
+  .nav {
+    padding: 1.2rem 0.5rem;
+  }
 }
 
 .nav__item {
   position: relative;
   border-radius: 2px;
   border: 1px solid #e0e2e5;
-  padding: 1vw;
-  margin: 0 0.5vw;
-  font-size: 1.2vw;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   max-width: 30%;
 }
 
+@media (max-width: 767px) {
+  .nav__item {
+    flex-grow: 1;
+    justify-content: center;
+  }
+}
+
 .nav__icon {
   color: var(--primary-color);
-  font-size: 1.5vw;
+  font-size: 1.4rem;
 }
 
 .nav__input {
   outline: none;
   border: 0;
   color: #9E9E9E;
-  padding: 0.5vw;
+  padding: 0.5rem;
   position: relative;
   width: 100%;
   background: transparent;
 }
 
 .nav__input option {
-  background-color: tomato;
+  background-color: var(--primary-color);
   color: white;
+}
+
+@media (max-width: 767px) {
+  .nav__input.mobile-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    padding: 0;
+  }
 }
 
 .total-movies {
@@ -1667,8 +1715,8 @@ body.landing h1 {
   background-color: var(--dark-color);
   font-family: var(--accent-font);
   font-size: 1.5em;
-  padding-left: 1.5vw;
-  padding-right: 1.5vw;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .recent-movies {
@@ -1678,8 +1726,15 @@ body.landing h1 {
   bottom: 0;
   right: 0;
   background-color: var(--highlight-color);
-  padding: 2vw 6vw 2vw 6vw;
+  padding: 2rem 6rem 2rem 6rem;
   z-index: 501;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .recent-movies {
+    padding: 2.5rem;
+  }
 }
 
 .recent-movies__content {
@@ -1693,16 +1748,29 @@ body.landing h1 {
 
 .recent-movies__close {
   position: absolute;
-  top: 1vw;
-  right: 1vw;
-  font-size: 2em;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
+@media (max-width: 767px) {
+  .recent-movies__close {
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+}
+
 .recent-movies__item {
-  width: 20%;
-  padding: 0.5vw;
+  width: 25%;
+  padding: 0.5rem;
   z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .recent-movies__item {
+    width: 100%;
+  }
 }
 
 .recent-movies__item .margin {
@@ -1715,15 +1783,15 @@ body.landing h1 {
   background-color: #ffb933;
   text-align: left;
   color: white;
-  font-size: 1vw;
-  padding: 1vw;
+  font-size: 1.3rem;
+  padding: 1rem;
 }
 
 .recent-movies__item span {
   color: #F7FDA4;
   font-family: var(--accent-font);
-  font-size: 1.3vw;
-  margin-right: 0.5vw;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .recent-headline {
@@ -1731,15 +1799,54 @@ body.landing h1 {
   color: #ffb933;
   width: 100%;
   text-align: left;
-  font-size: 4vw;
-  padding-bottom: 0.5vw;
+  font-size: 3.8rem;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .nav-search {
+    position: unset;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-search-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--near-white);
+    display: none;
+    z-index: 5;
+    padding: 1rem;
+  }
+
+  .nav-search-wrap.open {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .search-input {
+    font-size: 1.8rem;
+  }
+}
+
+.nav-search-close {
+  color: var(--primary-color);
+  font-size: 1.5em;
+}
+
+@media (max-width: 767px) {
+  .nav-search-close {
+    font-size: 3rem;
+  }
 }
 
 .autocomplete {
   top: 100%;
   left: 0;
   background-color: white;
-  padding: 1vw;
+  padding: 1rem;
   border: 1px solid #e0e2e5;
   border-top: 0;
   color: var(--primary-color);
@@ -1747,8 +1854,8 @@ body.landing h1 {
 }
 
 .autocomplete__item {
-  margin-bottom: 0.5vw;
-  font-size: 1.2em;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
@@ -1756,9 +1863,24 @@ body.landing h1 {
   color: gold;
 }
 
+@media (max-width: 767px) {
+  .autocomplete__item {
+    font-size: 1.8rem;
+  }
+}
+
+:root {
+  font-size: 1vw;
+}
+
+@media (max-width: 767px) {
+  :root {
+    font-size: 3.5vw;
+  }
+}
+
 body {
   background-color: var(--near-white);
-  font-size: 1.2vw;
   font-family: var(--primary-font);
 }
 

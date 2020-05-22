@@ -1,27 +1,31 @@
 <template>
 
+    <div class="nav-search nav__item grow-2" title="Search movies">
+        <i class="nav__icon icon-search" @click="setSearchOpen"></i>
 
-    <div class="nav-search nav__item grow-2 pos-relative" title="Search movies">
-        <i class="nav__icon icon-search"></i>
-        <input class="nav__input search-input"
-               v-model="query"
-               placeholder="Search..."
-               type="text"
-               @input="searchChange"
-               @keydown.down="navigateList( +1 )"
-               @keydown.up="navigateList( -1 )"
-               @keyup.enter="jumpToMovie( 'selected' )"
-                >
+        <div class="nav-search-wrap width-100 d-flex align-center" :class="{ open : openSearch }">
+            <input class="nav__input search-input"
+                   v-model="query"
+                   placeholder="Search..."
+                   type="text"
+                   @input="searchChange"
+                   @keydown.down="navigateList( +1 )"
+                   @keydown.up="navigateList( -1 )"
+                   @keyup.enter="jumpToMovie( 'selected' )"
+                   ref="search"
+                    >
 
-        <div v-if="results" class="autocomplete pos-absolute width-100">
-            <div v-for="( movie, index ) in results"
-                 class="autocomplete__item ellipses"
-                 :class="{ selected : selectedItem === index }"
-                 v-text="movie.title"
-                 @click="jumpToMovie( movie )"
-                ></div>
+            <i v-if="openSearch || query" class="nav-search-close icon-x pointer" @click="reset"></i>
+
+            <div v-if="results" class="autocomplete pos-absolute width-100">
+                <div v-for="( movie, index ) in results"
+                     class="autocomplete__item ellipses"
+                     :class="{ selected : selectedItem === index }"
+                     v-text="movie.title"
+                     @click="jumpToMovie( movie )"
+                    ></div>
+            </div>
         </div>
-
     </div>
 </template>
 
@@ -37,6 +41,7 @@
                 results : null,
                 axiosCancelToken : null,
                 axiosSource : null,
+                openSearch : false
             }
         },
 
@@ -51,6 +56,22 @@
         },
 
         methods : {
+
+            setSearchOpen(){
+                this.openSearch = true;
+
+                this.$nextTick( () => {
+                    this.$refs.search.focus();
+                });
+
+            },
+
+            reset(){
+                this.query = '';
+                this.results = null;
+                this.selectedItem = -1;
+                this.openSearch = false;
+            },
 
             navigateList( increment ){
                 this.selectedItem += increment;
@@ -74,10 +95,8 @@
                 }
 
                 App.event.event( 'setYear', movie );
+                this.reset();
 
-                this.query = '';
-                this.results = null;
-                this.selectedItem = -1;
             },
 
             makeRequestCreator() {

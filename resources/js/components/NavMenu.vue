@@ -13,20 +13,15 @@
 
     <nav class="nav d-flex pos-fixed width-100 align-stretch justify-center">
 
-        <!-------- MENU --------->
-        <div class="view-menu nav__item mobile-only">
-            <i class="nav__icon icon-menu"></i>
-        </div>
-
         <!-------- RECENTS --------->
         <div class="view-recents nav__item pointer" @click="recentOpen = true">
             <i class="nav__icon icon-recent"></i>
         </div>
 
         <!-- year select -->
-        <div class="view-year nav__item grow-2" title="Switch years">
+        <div class="view-year nav__item grow-2 pos-relative" title="Switch years">
             <i class="nav__icon icon-year"></i>
-            <select v-if="shared.movies" class="nav__input year-select" :value="shared.currentYear" @change="setYear">
+            <select v-if="shared.movies" class="nav__input mobile-cover year-select" :value="shared.currentYear" @change="setYear">
                 <option v-for="year in movieYears" :value='year' v-text="year"></option>
             </select>
         </div>
@@ -39,7 +34,7 @@
         <!-- filter select -->
         <div class="view-filter nav__item grow-1" title="Filter movies">
             <i class="nav__icon icon-show"></i>
-            <select class="nav__input nav-select" v-model="shared.filter">
+            <select class="nav__input nav-select mobile-cover" v-model="shared.filter">
                 <option value="all">all</option>
                 <option value="unseen">unseen</option>
                 <option value="seen">seen</option>

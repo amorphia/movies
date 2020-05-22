@@ -63,10 +63,12 @@ class MovieController extends Controller
     {
         if( ! $request->searchTerm ) return;
 
-        return Movie::where( 'title', 'like', "%{$request->searchTerm}%" )
+        $movies = Movie::where( 'title', 'like', "%{$request->searchTerm}%" )
                     ->take( 10 )
                     ->orderBy( 'gross', 'desc' )
                     ->get();
+
+        return $movies->count() ? $movies : [[ "title" => "No Results", "year" => date( "y") ]];
     }
 
 
