@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovieController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Movie.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Movie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Scraper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/workingSlider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/workingSlider.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/dependencies.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/dependencies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_landing.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/partials/_landing.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_animations.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_forms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_forms.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_mq.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_mq.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_reset.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_transitions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_transitions.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_utility.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_utility.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/utlitites/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_20_213104_create_movies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_20_213104_create_movies_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +184,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589867483837</updated>
       <workItem from="1589867485596" duration="5616000" />
-      <workItem from="1590013224845" duration="54539000" />
+      <workItem from="1590013224845" duration="55159000" />
     </task>
     <servers />
   </component>
