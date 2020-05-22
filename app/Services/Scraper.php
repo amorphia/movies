@@ -37,7 +37,7 @@ class Scraper
         return $message;
     }
 
-    protected function NewMoviesArray( $year ){
+    public function newMoviesArray( $year ){
 
         $crawler = $this->client->request('GET', "https://www.boxofficemojo.com/year/{$year}/?grossesOption=totalGrosses&sort=grossToDate");
         $movies = [];
@@ -71,7 +71,7 @@ class Scraper
 
         // filter out da junk
         if( $rank > 300
-            || stripos( $title, 'Re-release') !== false
+            || $node->filter( 'span.a-size-small' )->count() > 0
             || $theaters < 50  ) return;
 
         // return the movie array

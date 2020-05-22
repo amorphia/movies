@@ -31,7 +31,6 @@ require( './partials/_state' ); // set up shared state
 require( './partials/_event' ); // Event emitter
 require( './partials/_cookies' ); // Cookie handler
 
-
 const VueApp = new Vue({
     el: '#app',
     data : {

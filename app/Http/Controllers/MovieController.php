@@ -4,17 +4,76 @@ namespace App\Http\Controllers;
 
 use App\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        //
+        $request->validate([
+            'years' => 'array',
+            'years.*' => 'digits:4|integer|min:1900|max:'.( date('Y') )
+        ]);
+
+        $movies = DB::table('movies')
+                    ->whereIn( 'year', $request->years )
+                    ->leftJoin('movie_user', 'movies.id', '=', 'movie_user.movie_id')
+                    ->select('movies.*', 'movie_user.active', 'movie_user.created_at AS seen_at')
+                    ->orderBy( 'gross', 'desc' )
+                    ->orderBy( 'rank', 'asc' )
+                    ->get();
+
+        $movies = $movies->groupBy( 'year' );
+
+        return $movies;
+    }
+
+
+
+    public function toggle( Request $request, Movie $movie )
+    {
+        $user = auth()->user();
+
+        if( $request->active ){
+            $user->setMovieSeen( $movie );
+        } else {
+            $user->setMovieUnseen( $movie );
+        }
+    }
+
+
+    public function search( Request $request )
+    {
+        if( ! $request->searchTerm ) return;
+
+        return Movie::where( 'title', 'like', "%{$request->searchTerm}%" )
+                    ->take( 10 )
+                    ->orderBy( 'gross', 'desc' )
+                    ->get();
+    }
+
+
+    public function recent()
+    {
+        $user = auth()->user();
+        return $user->recentMovies();
     }
 
     /**

@@ -36,6 +36,52 @@ class User extends Authenticatable
     ];
 
 
+
+
+    /**
+     *
+     *  METHODS
+     *
+     */
+
+
+    public function recentMovies()
+    {
+        return $this->movies()->orderBy( 'movie_user.created_at', 'desc' )->take( 50 )->get();
+    }
+
+
+    public function seenTotal()
+    {
+        return $this->movies()->wherePivot( 'active', 1 )->count();
+    }
+
+
+    public function setMovieSeen( $movie )
+    {
+        // if we haven't ever set the relation yet
+        if( ! $this->movies->contains( $movie ) ){
+            $this->movies()->attach( $movie, [
+                'active' => 1
+            ]);
+        } else {
+        // if we've already set this relation
+            $this->movies()->updateExistingPivot( $movie, [
+                'active' => 1
+            ]);
+        }
+    }
+
+    public function setMovieUnseen( $movie )
+    {
+        // if we've already set this relation
+        if( $this->movies->contains( $movie ) ) {
+            $this->movies()->updateExistingPivot( $movie, [
+                'active' => 0
+            ]);
+        }
+    }
+
     /**
      *
      *  RELATIONSHIPS

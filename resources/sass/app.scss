@@ -1,15 +1,17 @@
 @import 'icomoon/style.css';
-@import 'partials/reset';
-@import 'partials/variables';
-@import 'partials/mq';
-@import 'partials/animations';
-@import 'partials/utility';
-@import 'partials/forms';
-@import 'partials/transitions';
-@import 'landing';
+@import 'utlitites/reset';
+@import 'utlitites/variables';
+@import 'utlitites/mq';
+@import 'utlitites/animations';
+@import 'utlitites/utility';
+@import 'utlitites/forms';
+@import 'utlitites/transitions';
+@import 'partials/landing';
+@import 'partials/movies';
+@import 'partials/nav';
 
 body {
     background-color: var(--near-white);
-    font-size: 2.5vw;
+    font-size: 1.2vw;
     font-family: var(--primary-font);
 }

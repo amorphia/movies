@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Movie;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $max = Movie::max( 'year' );
+        $min = Movie::min( 'year' );
+
+        $seen_total = auth()->user()->seenTotal();
+
+        return view( 'home', compact( 'max', 'min', 'seen_total' ) );
     }
 }

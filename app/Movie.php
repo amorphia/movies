@@ -9,6 +9,7 @@ class Movie extends Model
 
     protected $guarded = [];
 
+
     /**
      *
      *  RELATIONSHIPS

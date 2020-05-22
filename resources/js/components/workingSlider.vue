@@ -33,5 +33,49 @@
 
 <style>
 
+.loader-bar {
+    position: fixed !important;
+    z-index: 100000;
+}
+
+.loader-bar {
+    height: 5px;
+    width: 100%;
+    position: relative;
+}
+
+.loader-bar__streak {
+    position: relative;
+    height: 100%;
+    animation-name: loader-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes loader-animation {
+    0% {
+        width: 0%;
+        background-color: #ff00fa;
+    }
+    25% {
+        width: 100%;
+        left: 0%
+    }
+    50% {
+        left: 100%;
+        width: 0;
+        background-color: gold;
+    }
+    75% {
+        left: 0%;
+        width: 100%
+    }
+    100% {
+        left: 0%;
+        width: 0%;
+        background-color: #ff00fa;
+    }
+}
 </style>
 

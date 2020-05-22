@@ -22,6 +22,8 @@
         App.url = "{{ config( 'app.url' ) }}";
     </script>
 
+    @stack('header-scripts')
+
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- CSS -->
@@ -36,6 +38,7 @@
 <div id="app">
 
     <vue-csrf></vue-csrf>
+    <working-slider></working-slider>
 
     <div class="main">
 

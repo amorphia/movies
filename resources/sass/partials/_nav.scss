@@ -1,0 +1,140 @@
+
+.nav {
+    top: 0;
+    z-index: 4;
+    padding: 1.4vw 2vw;
+    background-color: rgba(255,255,255,.98);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.01);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+
+    &.closed {
+        transform:translateY(-100%);
+    }
+}
+
+.nav__item {
+    position: relative;
+    border-radius: 2px;
+    border: 1px solid #e0e2e5;
+    padding: 1vw;
+    margin: 0 .5vw;
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
+    max-width: 30%;
+}
+
+.nav__icon {
+    color: var(--primary-color);
+    font-size: 1.5vw;
+}
+
+.nav__input {
+    outline: none;
+    border: 0;
+    color: #9E9E9E;
+    padding: .5vw;
+    position: relative;
+    width: 100%;
+    background: transparent;
+
+    option {
+        background-color: tomato;
+        color: white;
+    }
+}
+
+.total-movies {
+    color: var(--highlight-color);
+    background-color: var(--dark-color);
+    font-family: var(--accent-font);
+    font-size: 1.5em;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+}
+
+.recent-movies {
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--highlight-color);
+    padding: 2vw 6vw 2vw 6vw;
+    z-index: 501;
+}
+
+.recent-movies__content {
+    overflow-y: auto;
+    max-height: 90vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.recent-movies__close {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    font-size: 2em;
+    color: rgba(255,255,255,.5);
+}
+
+.recent-movies__item {
+    width: 20%;
+    padding: .5vw;
+    z-index: 2;
+
+    .margin {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-family: var(--secondary-font);
+        letter-spacing: 1px;
+        transition: all .3s;
+        background-color: rgb(255, 185, 51);
+        text-align: left;
+        color: white;
+        font-size: 1vw;
+        padding: 1vw;
+    }
+
+    span {
+        color: #F7FDA4;
+        font-family: var(--accent-font);
+        font-size: 1.3vw;
+        margin-right: .5vw;
+    }
+}
+
+
+.recent-headline {
+    font-family: var(--accent-font);
+    color: rgb(255, 185, 51);
+    width: 100%;
+    text-align: left;
+    font-size: 4vw;
+    padding-bottom: .5vw;
+}
+
+.autocomplete {
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 1vw;
+    border: 1px solid #e0e2e5;
+    border-top: 0;
+    color: var(--primary-color);
+    font-family: var(--accent-font);
+}
+
+.autocomplete__item {
+    margin-bottom: .5vw;
+    font-size: 1.2em;
+    cursor: pointer;
+
+    &.selected {
+        color: gold;
+    }
+}
