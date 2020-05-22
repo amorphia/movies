@@ -42040,7 +42040,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "transition-group",
-        { attrs: { name: "fade", tag: "div" } },
+        { attrs: { name: "null", tag: "div" } },
         _vm._l(_vm.shared.movies, function(data, year) {
           return year == _vm.shared.currentYear
             ? _c("div", { key: data.key }, [

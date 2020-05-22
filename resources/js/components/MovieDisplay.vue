@@ -12,7 +12,7 @@
             <i class="icon-right pos-absolute-center"></i>
         </div>
     </nav>
-    <transition-group name="fade" tag="div">
+    <transition-group name="null" tag="div">
         <div v-for="(data, year) in shared.movies" :key="data.key" v-if="year == shared.currentYear">
 
             <div class='year-wrap width-100'>
