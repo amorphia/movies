@@ -1,5 +1,5 @@
 <template>
-<div class="movie-display" v-touch:swipe="swipeHandler">
+<div class="movie-display overflow-hidden" v-touch:swipe="swipeHandler">
 
     <nav class='hover-nav left-hover-nav' v-if="shared.movies.hasOwnProperty( shared.currentYear + 1 )">
         <div class='hover-arrow pos-absolute-center left-hover-arrow' @click="setYear( shared.currentYear + 1 )">
@@ -12,22 +12,28 @@
             <i class="icon-right pos-absolute-center"></i>
         </div>
     </nav>
+    <transition-group :name="swipeDirection" tag="div">
+        <div v-for="(data, year) in shared.movies" :key="data.key" v-if="year == shared.currentYear">
 
-    <div class='year-wrap width-100'>
-        <div class="year-wrap__content d-flex align-center justify-between">
-            <span class='year-wrap__title' v-text="shared.currentYear"></span>
-            <span class='year-wrap__seen'>No. Watched <span class='year-wrap__seen-number' v-text="seenThisYear"></span></span>
-        </div>
-    </div>
-
-    <section class="movie-list width-100 pos-relative" :class="shared.filter">
-        <div v-for="(movie, index) in shared.movies[shared.currentYear]" class='movie-wrap' :class="{ active : movie.active }">
-            <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
-                <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
-                <a title='IMDB Link' :href="`https://duckduckgo.com/?q=\\imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
+            <div class='year-wrap width-100'>
+                <div class="year-wrap__content d-flex align-center justify-between">
+                    <span class='year-wrap__title' v-text="year"></span>
+                    <span class='year-wrap__seen'>No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></span>
+                </div>
             </div>
+
+            <section class="movie-list width-100 pos-relative" :class="shared.filter">
+
+                <div v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
+                    <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
+                        <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
+                        <a title='IMDB Link' :href="`https://duckduckgo.com/?q=\\imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
+                    </div>
+                </div>
+
+            </section>
         </div>
-    </section>
+    </transition-group>
 </div>
 </template>
 
@@ -40,7 +46,8 @@
         data() {
             return {
                 shared : App.state,
-                bufferYears : 2
+                bufferYears : 2,
+                swipeDirection : ''
             };
         },
 
@@ -52,16 +59,18 @@
         },
 
         computed : {
-            seenThisYear(){
-                if( !this.shared.movies || !this.shared.movies[ this.shared.currentYear ] ) return 0;
 
-                let filtered = this.shared.movies[ this.shared.currentYear ].filter( item => item.active );
-                return filtered.length;
-            },
 
         },
 
         methods : {
+
+            seenInYear( year ){
+                if( !this.shared.movies || !this.shared.movies[ year ].movies ) return 0;
+
+                let filtered = this.shared.movies[ year ].movies.filter( item => item.active );
+                return filtered.length;
+            },
 
             swipeHandler( direction ){
                 let newYear;
@@ -119,7 +128,7 @@
                 // build years object
                 let years = {};
                 for( let i = App.years.max; i >= App.years.min; i-- ){
-                    years[i] = null;
+                    years[i] = { movies : null, key : i };
                 }
 
                 // init shared movie tree
@@ -140,6 +149,14 @@
                 // if that year doesn't exist, abort
                 if( !this.shared.movies.hasOwnProperty( year ) ) return;
 
+                let oldYear = this.shared.currentYear;
+
+                if( oldYear > year ){
+                    this.swipeDirection = 'left';
+                } else {
+                    this.swipeDirection = 'right';
+                }
+
                 this.shared.currentYear = year;
 
                 // Lets load the data for the given year, plus a number before and after equal to our buffer, if needed.
@@ -150,7 +167,7 @@
                 for( let i = startYear; i <= endYear; i++ ){
                     // loop through the current year, and the ones before and after and check if there
                     // is a null entry for it in the movies object. If so add it to the list of things to load
-                    if( this.shared.movies.hasOwnProperty( i ) && this.shared.movies[i] === null ){
+                    if( this.shared.movies.hasOwnProperty( i ) && this.shared.movies[i].movies === null ){
                         yearsToLoad.push( i );
                     }
                 }
@@ -179,7 +196,7 @@
                     .then( response => {
 
                         for( let year in response.data ){
-                            this.shared.movies[ year ] = response.data[ year ];
+                            this.shared.movies[ year ].movies = response.data[ year ];
                         }
 
                         if( movie ){

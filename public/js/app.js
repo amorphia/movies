@@ -1987,12 +1987,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
     return {
       shared: App.state,
-      bufferYears: 2
+      bufferYears: 2,
+      swipeDirection: ''
     };
   },
   created: function created() {
@@ -2001,16 +2008,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     this.setYear(App.years.max);
     App.event.on('setYear', this.setYear);
   },
-  computed: {
-    seenThisYear: function seenThisYear() {
-      if (!this.shared.movies || !this.shared.movies[this.shared.currentYear]) return 0;
-      var filtered = this.shared.movies[this.shared.currentYear].filter(function (item) {
+  computed: {},
+  methods: {
+    seenInYear: function seenInYear(year) {
+      if (!this.shared.movies || !this.shared.movies[year].movies) return 0;
+      var filtered = this.shared.movies[year].movies.filter(function (item) {
         return item.active;
       });
       return filtered.length;
-    }
-  },
-  methods: {
+    },
     swipeHandler: function swipeHandler(direction) {
       var newYear;
 
@@ -2065,7 +2071,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var years = {};
 
       for (var i = App.years.max; i >= App.years.min; i--) {
-        years[i] = null;
+        years[i] = {
+          movies: null,
+          key: i
+        };
       } // init shared movie tree
 
 
@@ -2084,6 +2093,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
       if (!this.shared.movies.hasOwnProperty(year)) return;
+      var oldYear = this.shared.currentYear;
+
+      if (oldYear > year) {
+        this.swipeDirection = 'left';
+      } else {
+        this.swipeDirection = 'right';
+      }
+
       this.shared.currentYear = year; // Lets load the data for the given year, plus a number before and after equal to our buffer, if needed.
 
       var yearsToLoad = [];
@@ -2094,7 +2111,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       for (var i = startYear; i <= endYear; i++) {
         // loop through the current year, and the ones before and after and check if there
         // is a null entry for it in the movies object. If so add it to the list of things to load
-        if (this.shared.movies.hasOwnProperty(i) && this.shared.movies[i] === null) {
+        if (this.shared.movies.hasOwnProperty(i) && this.shared.movies[i].movies === null) {
           yearsToLoad.push(i);
         }
       } // if we have any years to load, then lets load them
@@ -2121,7 +2138,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         years: years
       }).then(function (response) {
         for (var year in response.data) {
-          _this.shared.movies[year] = response.data[year];
+          _this.shared.movies[year].movies = response.data[year];
         }
 
         if (movie) {
@@ -41983,7 +42000,7 @@ var render = function() {
           arg: "swipe"
         }
       ],
-      staticClass: "movie-display"
+      staticClass: "movie-display overflow-hidden"
     },
     [
       _vm.shared.movies.hasOwnProperty(_vm.shared.currentYear + 1)
@@ -42021,81 +42038,98 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "year-wrap width-100" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "year-wrap__content d-flex align-center justify-between"
-          },
-          [
-            _c("span", {
-              staticClass: "year-wrap__title",
-              domProps: { textContent: _vm._s(_vm.shared.currentYear) }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "year-wrap__seen" }, [
-              _vm._v("No. Watched "),
-              _c("span", {
-                staticClass: "year-wrap__seen-number",
-                domProps: { textContent: _vm._s(_vm.seenThisYear) }
-              })
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c(
-        "section",
-        {
-          staticClass: "movie-list width-100 pos-relative",
-          class: _vm.shared.filter
-        },
-        _vm._l(_vm.shared.movies[_vm.shared.currentYear], function(
-          movie,
-          index
-        ) {
-          return _c(
-            "div",
-            { staticClass: "movie-wrap", class: { active: movie.active } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "movie",
-                  attrs: { id: "movie-" + movie.id, "data-rank": index + 1 }
-                },
-                [
-                  _c("div", {
-                    staticClass: "pad-buffer movie__title",
-                    domProps: { innerHTML: _vm._s(movie.title) },
-                    on: {
-                      click: function($event) {
-                        return _vm.toggleMovie(movie)
-                      }
-                    }
+        "transition-group",
+        { attrs: { name: _vm.swipeDirection, tag: "div" } },
+        _vm._l(_vm.shared.movies, function(data, year) {
+          return year == _vm.shared.currentYear
+            ? _c("div", { key: data.key }, [
+                _c("div", { staticClass: "year-wrap width-100" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "year-wrap__content d-flex align-center justify-between"
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "year-wrap__title",
+                        domProps: { textContent: _vm._s(year) }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "year-wrap__seen" }, [
+                        _vm._v("No. Watched "),
+                        _c("span", {
+                          staticClass: "year-wrap__seen-number",
+                          domProps: {
+                            textContent: _vm._s(_vm.seenInYear(year))
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "section",
+                  {
+                    staticClass: "movie-list width-100 pos-relative",
+                    class: _vm.shared.filter
+                  },
+                  _vm._l(data.movies, function(movie, index) {
+                    return _c(
+                      "div",
+                      {
+                        staticClass: "movie-wrap",
+                        class: { active: movie.active }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "movie",
+                            attrs: {
+                              id: "movie-" + movie.id,
+                              "data-rank": index + 1
+                            }
+                          },
+                          [
+                            _c("div", {
+                              staticClass: "pad-buffer movie__title",
+                              domProps: { innerHTML: _vm._s(movie.title) },
+                              on: {
+                                click: function($event) {
+                                  return _vm.toggleMovie(movie)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("a", {
+                              staticClass: "movie__link icon-link",
+                              attrs: {
+                                title: "IMDB Link",
+                                href:
+                                  "https://duckduckgo.com/?q=\\imdb " +
+                                  movie.year +
+                                  " " +
+                                  movie.title,
+                                target: "_blank"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
                   }),
-                  _vm._v(" "),
-                  _c("a", {
-                    staticClass: "movie__link icon-link",
-                    attrs: {
-                      title: "IMDB Link",
-                      href:
-                        "https://duckduckgo.com/?q=\\imdb " +
-                        movie.year +
-                        " " +
-                        movie.title,
-                      target: "_blank"
-                    }
-                  })
-                ]
-              )
-            ]
-          )
+                  0
+                )
+              ])
+            : _vm._e()
         }),
         0
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
