@@ -1579,23 +1579,31 @@ body.landing {
   margin-top: 0.5rem;
 }
 
-.movie.active {
-  background-color: #f4f4f4;
-}
-
-.movie.active .movie__title {
-  color: #525151;
-}
-
-.movie.active .movie__link {
-  color: white;
-}
-
 .movie.flash {
   -webkit-animation: flash 1.5s ease-out;
           animation: flash 1.5s ease-out;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
+}
+
+.movie-wrap.active .movie {
+  background-color: #f4f4f4;
+}
+
+.movie-wrap.active .movie .movie__title {
+  color: #525151;
+}
+
+.movie-wrap.active .movie .movie__link {
+  color: white;
+}
+
+.movie-list.unseen .movie-wrap.active {
+  display: none;
+}
+
+.movie-list.seen .movie-wrap:not(.active) {
+  display: none;
 }
 
 .hover-nav {

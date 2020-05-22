@@ -2008,27 +2008,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         return item.active;
       });
       return filtered.length;
-    },
-    filteredMovies: function filteredMovies() {
-      var yearMovies = this.shared.movies[this.shared.currentYear];
-
-      switch (this.shared.filter) {
-        case 'all':
-          return yearMovies;
-          break;
-
-        case 'unseen':
-          return yearMovies.filter(function (item) {
-            return !item.active;
-          });
-          break;
-
-        case 'seen':
-          return yearMovies.filter(function (item) {
-            return item.active;
-          });
-          break;
-      }
     }
   },
   methods: {
@@ -2142,9 +2121,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         years: years
       }).then(function (response) {
         for (var year in response.data) {
-          response.data[year].forEach(function (item, index) {
-            return item.rank = index + 1;
-          });
           _this.shared.movies[year] = response.data[year];
         }
 
@@ -42071,42 +42047,51 @@ var render = function() {
       _vm._v(" "),
       _c(
         "section",
-        { staticClass: "movie-list width-100 pos-relative" },
-        _vm._l(_vm.filteredMovies, function(movie) {
-          return _c("div", { staticClass: "movie-wrap" }, [
-            _c(
-              "div",
-              {
-                staticClass: "movie",
-                class: { active: movie.active },
-                attrs: { id: "movie-" + movie.id, "data-rank": movie.rank }
-              },
-              [
-                _c("div", {
-                  staticClass: "pad-buffer movie__title",
-                  domProps: { innerHTML: _vm._s(movie.title) },
-                  on: {
-                    click: function($event) {
-                      return _vm.toggleMovie(movie)
+        {
+          staticClass: "movie-list width-100 pos-relative",
+          class: _vm.shared.filter
+        },
+        _vm._l(_vm.shared.movies[_vm.shared.currentYear], function(
+          movie,
+          index
+        ) {
+          return _c(
+            "div",
+            { staticClass: "movie-wrap", class: { active: movie.active } },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "movie",
+                  attrs: { id: "movie-" + movie.id, "data-rank": index + 1 }
+                },
+                [
+                  _c("div", {
+                    staticClass: "pad-buffer movie__title",
+                    domProps: { innerHTML: _vm._s(movie.title) },
+                    on: {
+                      click: function($event) {
+                        return _vm.toggleMovie(movie)
+                      }
                     }
-                  }
-                }),
-                _vm._v(" "),
-                _c("a", {
-                  staticClass: "movie__link icon-link",
-                  attrs: {
-                    title: "IMDB Link",
-                    href:
-                      "https://duckduckgo.com/?q=\\imdb " +
-                      movie.year +
-                      " " +
-                      movie.title,
-                    target: "_blank"
-                  }
-                })
-              ]
-            )
-          ])
+                  }),
+                  _vm._v(" "),
+                  _c("a", {
+                    staticClass: "movie__link icon-link",
+                    attrs: {
+                      title: "IMDB Link",
+                      href:
+                        "https://duckduckgo.com/?q=\\imdb " +
+                        movie.year +
+                        " " +
+                        movie.title,
+                      target: "_blank"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
         }),
         0
       )

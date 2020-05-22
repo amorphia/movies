@@ -127,19 +127,6 @@
         }
     }
 
-    &.active {
-
-        background-color: rgb(244,244,244);
-
-        .movie__title {
-            color: #525151;
-        }
-
-        .movie__link{
-            color: white;
-        }
-    }
-
     &.flash {
         animation: flash 1.5s ease-out;
         animation-iteration-count: 1;
@@ -147,8 +134,26 @@
 
 }
 
+.movie-wrap.active .movie {
+    background-color: rgb(244,244,244);
+
+    .movie__title {
+        color: #525151;
+    }
+
+    .movie__link{
+        color: white;
+    }
+}
 
 
+.movie-list.unseen .movie-wrap.active {
+    display: none;
+}
+
+.movie-list.seen .movie-wrap:not( .active ) {
+    display: none;
+}
 
 .hover-nav {
     pointer-events: initial;

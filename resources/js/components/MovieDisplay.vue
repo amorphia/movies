@@ -20,9 +20,9 @@
         </div>
     </div>
 
-    <section class="movie-list width-100 pos-relative">
-        <div v-for="movie in filteredMovies" class='movie-wrap'>
-            <div class="movie" :id="`movie-${movie.id}`" :class="{ active : movie.active }" :data-rank="movie.rank">
+    <section class="movie-list width-100 pos-relative" :class="shared.filter">
+        <div v-for="(movie, index) in shared.movies[shared.currentYear]" class='movie-wrap' :class="{ active : movie.active }">
+            <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
                 <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
                 <a title='IMDB Link' :href="`https://duckduckgo.com/?q=\\imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
             </div>
@@ -59,21 +59,6 @@
                 return filtered.length;
             },
 
-            filteredMovies(){
-                let yearMovies = this.shared.movies[this.shared.currentYear];
-
-                switch( this.shared.filter ){
-                    case 'all':
-                        return yearMovies;
-                        break;
-                    case 'unseen':
-                        return yearMovies.filter( item => !item.active );
-                        break;
-                    case 'seen':
-                        return yearMovies.filter( item => item.active );
-                        break;
-                }
-            }
         },
 
         methods : {
@@ -194,9 +179,6 @@
                     .then( response => {
 
                         for( let year in response.data ){
-
-                            response.data[ year ].forEach( ( item, index ) => item.rank = index + 1 );
-
                             this.shared.movies[ year ] = response.data[ year ];
                         }
 
