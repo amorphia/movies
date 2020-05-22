@@ -2032,6 +2032,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   },
   methods: {
+    swipeHandler: function swipeHandler(direction) {
+      var newYear;
+
+      if (direction === 'left') {
+        newYear = this.shared.currentYear - 1;
+      }
+
+      if (direction === 'right') {
+        newYear = this.shared.currentYear + 1;
+      }
+
+      if (newYear && this.shared.movies.hasOwnProperty(newYear)) {
+        this.setYear(newYear);
+      }
+    },
     setMovieSeen: function setMovieSeen(movie) {
       this.shared.seenTotal++;
       this.shared.recentMovies.unshift(movie);
@@ -41980,106 +41995,123 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "movie-display" }, [
-    _vm.shared.movies.hasOwnProperty(_vm.shared.currentYear + 1)
-      ? _c("nav", { staticClass: "hover-nav left-hover-nav" }, [
-          _c(
-            "div",
-            {
-              staticClass: "hover-arrow pos-absolute-center left-hover-arrow",
-              on: {
-                click: function($event) {
-                  return _vm.setYear(_vm.shared.currentYear + 1)
-                }
-              }
-            },
-            [_c("i", { staticClass: "icon-left pos-absolute-center" })]
-          )
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.shared.movies.hasOwnProperty(_vm.shared.currentYear - 1)
-      ? _c("nav", { staticClass: "hover-nav right-hover-nav" }, [
-          _c(
-            "div",
-            {
-              staticClass: "hover-arrow pos-absolute-center right-hover-arrow",
-              on: {
-                click: function($event) {
-                  return _vm.setYear(_vm.shared.currentYear - 1)
-                }
-              }
-            },
-            [_c("i", { staticClass: "icon-right pos-absolute-center" })]
-          )
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", { staticClass: "year-wrap width-100" }, [
-      _c(
-        "div",
+  return _c(
+    "div",
+    {
+      directives: [
         {
-          staticClass: "year-wrap__content d-flex align-center justify-between"
-        },
-        [
-          _c("span", {
-            staticClass: "year-wrap__title",
-            domProps: { textContent: _vm._s(_vm.shared.currentYear) }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "year-wrap__seen" }, [
-            _vm._v("No. Watched "),
-            _c("span", {
-              staticClass: "year-wrap__seen-number",
-              domProps: { textContent: _vm._s(_vm.seenThisYear) }
-            })
-          ])
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "section",
-      { staticClass: "movie-list width-100 pos-relative" },
-      _vm._l(_vm.filteredMovies, function(movie) {
-        return _c("div", { staticClass: "movie-wrap" }, [
-          _c(
-            "div",
-            {
-              staticClass: "movie",
-              class: { active: movie.active },
-              attrs: { id: "movie-" + movie.id, "data-rank": movie.rank }
-            },
-            [
-              _c("div", {
-                staticClass: "pad-buffer movie__title",
-                domProps: { innerHTML: _vm._s(movie.title) },
+          name: "touch",
+          rawName: "v-touch:swipe",
+          value: _vm.swipeHandler,
+          expression: "swipeHandler",
+          arg: "swipe"
+        }
+      ],
+      staticClass: "movie-display"
+    },
+    [
+      _vm.shared.movies.hasOwnProperty(_vm.shared.currentYear + 1)
+        ? _c("nav", { staticClass: "hover-nav left-hover-nav" }, [
+            _c(
+              "div",
+              {
+                staticClass: "hover-arrow pos-absolute-center left-hover-arrow",
                 on: {
                   click: function($event) {
-                    return _vm.toggleMovie(movie)
+                    return _vm.setYear(_vm.shared.currentYear + 1)
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c("a", {
-                staticClass: "movie__link icon-link",
-                attrs: {
-                  title: "IMDB Link",
-                  href:
-                    "https://duckduckgo.com/?q=\\imdb " +
-                    movie.year +
-                    " " +
-                    movie.title,
-                  target: "_blank"
+              },
+              [_c("i", { staticClass: "icon-left pos-absolute-center" })]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.shared.movies.hasOwnProperty(_vm.shared.currentYear - 1)
+        ? _c("nav", { staticClass: "hover-nav right-hover-nav" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "hover-arrow pos-absolute-center right-hover-arrow",
+                on: {
+                  click: function($event) {
+                    return _vm.setYear(_vm.shared.currentYear - 1)
+                  }
                 }
+              },
+              [_c("i", { staticClass: "icon-right pos-absolute-center" })]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "year-wrap width-100" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "year-wrap__content d-flex align-center justify-between"
+          },
+          [
+            _c("span", {
+              staticClass: "year-wrap__title",
+              domProps: { textContent: _vm._s(_vm.shared.currentYear) }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "year-wrap__seen" }, [
+              _vm._v("No. Watched "),
+              _c("span", {
+                staticClass: "year-wrap__seen-number",
+                domProps: { textContent: _vm._s(_vm.seenThisYear) }
               })
-            ]
-          )
-        ])
-      }),
-      0
-    )
-  ])
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "movie-list width-100 pos-relative" },
+        _vm._l(_vm.filteredMovies, function(movie) {
+          return _c("div", { staticClass: "movie-wrap" }, [
+            _c(
+              "div",
+              {
+                staticClass: "movie",
+                class: { active: movie.active },
+                attrs: { id: "movie-" + movie.id, "data-rank": movie.rank }
+              },
+              [
+                _c("div", {
+                  staticClass: "pad-buffer movie__title",
+                  domProps: { innerHTML: _vm._s(movie.title) },
+                  on: {
+                    click: function($event) {
+                      return _vm.toggleMovie(movie)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("a", {
+                  staticClass: "movie__link icon-link",
+                  attrs: {
+                    title: "IMDB Link",
+                    href:
+                      "https://duckduckgo.com/?q=\\imdb " +
+                      movie.year +
+                      " " +
+                      movie.title,
+                    target: "_blank"
+                  }
+                })
+              ]
+            )
+          ])
+        }),
+        0
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55147,6 +55179,370 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vue2-touch-events/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/vue2-touch-events/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ *
+ * @author    Jerry Bendy
+ * @since     4/12/2017
+ */
+
+function touchX(event) {
+    if(event.type.indexOf('mouse') !== -1){
+        return event.clientX;
+    }
+    return event.touches[0].clientX;
+}
+
+function touchY(event) {
+    if(event.type.indexOf('mouse') !== -1){
+        return event.clientY;
+    }
+    return event.touches[0].clientY;
+}
+
+var isPassiveSupported = (function() {
+    var supportsPassive = false;
+    try {
+        var opts = Object.defineProperty({}, 'passive', {
+            get: function() {
+                supportsPassive = true;
+            }
+        });
+        window.addEventListener('test', null, opts);
+    } catch (e) {}
+    return supportsPassive;
+})();
+
+
+var vueTouchEvents = {
+    install: function (Vue, constructorOptions) {
+
+        var globalOptions = Object.assign({}, {
+            disableClick: false,
+            tapTolerance: 10,  // px
+            swipeTolerance: 30,  // px
+            touchHoldTolerance: 400,  // ms
+            longTapTimeInterval: 400,  // ms
+            touchClass: ''
+        }, constructorOptions);
+
+        function touchStartEvent(event) {
+            var $this = this.$$touchObj,
+                isTouchEvent = event.type.indexOf('touch') >= 0,
+                isMouseEvent = event.type.indexOf('mouse') >= 0,
+                $el = this;
+
+            if (isTouchEvent) {
+                $this.lastTouchStartTime = event.timeStamp;
+            }
+
+            if (isMouseEvent && $this.lastTouchStartTime && event.timeStamp - $this.lastTouchStartTime < 350) {
+                return;
+            }
+
+            if ($this.touchStarted) {
+                return;
+            }
+
+            addTouchClass(this);
+
+            $this.touchStarted = true;
+
+            $this.touchMoved = false;
+            $this.swipeOutBounded = false;
+
+            $this.startX = touchX(event);
+            $this.startY = touchY(event);
+
+            $this.currentX = 0;
+            $this.currentY = 0;
+
+            $this.touchStartTime = event.timeStamp;
+
+            // Trigger touchhold event after `touchHoldTolerance`ms
+            $this.touchHoldTimer = setTimeout(function() {
+                triggerEvent(event, $el, 'touchhold');
+            }, $this.options.touchHoldTolerance);
+
+            triggerEvent(event, this, 'start');
+        }
+
+        function touchMoveEvent(event) {
+            var $this = this.$$touchObj;
+
+            $this.currentX = touchX(event);
+            $this.currentY = touchY(event);
+
+            if (!$this.touchMoved) {
+                var tapTolerance = $this.options.tapTolerance;
+
+                $this.touchMoved = Math.abs($this.startX - $this.currentX) > tapTolerance ||
+                    Math.abs($this.startY - $this.currentY) > tapTolerance;
+
+                if($this.touchMoved){
+                    cancelTouchHoldTimer($this);
+                    triggerEvent(event, this, 'moved');
+                }
+
+            } else if (!$this.swipeOutBounded) {
+                var swipeOutBounded = $this.options.swipeTolerance;
+
+                $this.swipeOutBounded = Math.abs($this.startX - $this.currentX) > swipeOutBounded &&
+                    Math.abs($this.startY - $this.currentY) > swipeOutBounded;
+            }
+
+            if($this.touchMoved){
+                triggerEvent(event, this, 'moving');
+            }
+        }
+
+        function touchCancelEvent() {
+            var $this = this.$$touchObj;
+
+            cancelTouchHoldTimer($this);
+            removeTouchClass(this);
+
+            $this.touchStarted = $this.touchMoved = false;
+            $this.startX = $this.startY = 0;
+        }
+
+        function touchEndEvent(event) {
+            var $this = this.$$touchObj,
+                isTouchEvent = event.type.indexOf('touch') >= 0,
+                isMouseEvent = event.type.indexOf('mouse') >= 0;
+
+            if (isTouchEvent) {
+                $this.lastTouchEndTime = event.timeStamp;
+            }
+
+            cancelTouchHoldTimer($this);
+
+            if (isMouseEvent && $this.lastTouchEndTime && event.timeStamp - $this.lastTouchEndTime < 350) {
+                return;
+            }
+
+            $this.touchStarted = false;
+
+            removeTouchClass(this);
+
+            // Fix #33, Trigger `end` event when touch stopped
+            triggerEvent(event, this, 'end');
+
+            if (!$this.touchMoved) {
+                // detect if this is a longTap event or not
+                if ($this.callbacks.longtap && event.timeStamp - $this.touchStartTime > $this.options.longTapTimeInterval) {
+                    event.preventDefault();
+                    triggerEvent(event, this, 'longtap');
+
+                } else {
+                    // emit tap event
+                    triggerEvent(event, this, 'tap');
+                }
+
+            } else if (!$this.swipeOutBounded) {
+                var swipeOutBounded = $this.options.swipeTolerance,
+                    direction;
+
+                if (Math.abs($this.startX - $this.currentX) < swipeOutBounded) {
+                    direction = $this.startY > $this.currentY ? 'top' : 'bottom';
+
+                } else {
+                    direction = $this.startX > $this.currentX ? 'left' : 'right';
+                }
+
+                // Only emit the specified event when it has modifiers
+                if ($this.callbacks['swipe.' + direction]) {
+                    triggerEvent(event, this, 'swipe.' + direction, direction);
+
+                } else {
+                    // Emit a common event when it has no any modifier
+                    triggerEvent(event, this, 'swipe', direction);
+                }
+            }
+        }
+
+        function mouseEnterEvent() {
+            addTouchClass(this);
+        }
+
+        function mouseLeaveEvent() {
+            removeTouchClass(this);
+        }
+
+        function triggerEvent(e, $el, eventType, param) {
+            var $this = $el.$$touchObj;
+
+            // get the callback list
+            var callbacks = $this.callbacks[eventType] || [];
+            if (callbacks.length === 0) {
+                return null;
+            }
+
+            for (var i = 0; i < callbacks.length; i++) {
+                var binding = callbacks[i];
+
+                if (binding.modifiers.stop) {
+                    e.stopPropagation();
+                }
+
+                if (binding.modifiers.prevent) {
+                    e.preventDefault();
+                }
+
+                // handle `self` modifier`
+                if (binding.modifiers.self && e.target !== e.currentTarget) {
+                    continue;
+                }
+
+                if (typeof binding.value === 'function') {
+                    if (param) {
+                        binding.value(param, e);
+                    } else {
+                        binding.value(e);
+                    }
+                }
+            }
+        }
+
+        function addTouchClass($el) {
+            var className = $el.$$touchObj.options.touchClass;
+            className && $el.classList.add(className);
+        }
+
+        function removeTouchClass($el) {
+            var className = $el.$$touchObj.options.touchClass;
+            className && $el.classList.remove(className);
+        }
+
+        function cancelTouchHoldTimer($this) {
+            if ($this.touchHoldTimer) {
+                clearTimeout($this.touchHoldTimer);
+                $this.touchHoldTimer = null;
+            }
+        }
+
+        function buildTouchObj($el, extraOptions) {
+            var touchObj = $el.$$touchObj || {
+                // an object contains all callbacks registered,
+                // key is event name, value is an array
+                callbacks: {},
+                // prevent bind twice, set to true when event bound
+                hasBindTouchEvents: false,
+                // default options, would be override by v-touch-options
+                options: globalOptions
+            };
+            if (extraOptions) {
+                touchObj.options = Object.assign({}, touchObj.options, extraOptions);
+            }
+            $el.$$touchObj = touchObj;
+            return $el.$$touchObj;
+        }
+
+        Vue.directive('touch', {
+            bind: function ($el, binding) {
+                // build a touch configuration object
+                var $this = buildTouchObj($el);
+
+                // register callback
+                var eventType = binding.arg || 'tap';
+                switch (eventType) {
+                    case 'swipe':
+                        var _m = binding.modifiers;
+                        if (_m.left || _m.right || _m.top || _m.bottom) {
+                            for (var i in binding.modifiers) {
+                                if (['left', 'right', 'top', 'bottom'].indexOf(i) >= 0) {
+                                    var _e = 'swipe.' + i;
+                                    $this.callbacks[_e] = $this.callbacks[_e] || [];
+                                    $this.callbacks[_e].push(binding);
+                                }
+                            }
+                        } else {
+                            $this.callbacks.swipe = $this.callbacks.swipe || [];
+                            $this.callbacks.swipe.push(binding);
+                        }
+                        break;
+
+                    default:
+                        $this.callbacks[eventType] = $this.callbacks[eventType] || [];
+                        $this.callbacks[eventType].push(binding);
+                }
+
+                // prevent bind twice
+                if ($this.hasBindTouchEvents) {
+                    return;
+                }
+
+                var passiveOpt = isPassiveSupported ? { passive: true } : false;
+                $el.addEventListener('touchstart', touchStartEvent, passiveOpt);
+                $el.addEventListener('touchmove', touchMoveEvent, passiveOpt);
+                $el.addEventListener('touchcancel', touchCancelEvent);
+                $el.addEventListener('touchend', touchEndEvent);
+
+                if (!$this.options.disableClick) {
+                    $el.addEventListener('mousedown', touchStartEvent);
+                    $el.addEventListener('mousemove', touchMoveEvent);
+                    $el.addEventListener('mouseup', touchEndEvent);
+                    $el.addEventListener('mouseenter', mouseEnterEvent);
+                    $el.addEventListener('mouseleave', mouseLeaveEvent);
+                }
+
+                // set bind mark to true
+                $this.hasBindTouchEvents = true;
+            },
+
+            unbind: function ($el) {
+                $el.removeEventListener('touchstart', touchStartEvent);
+                $el.removeEventListener('touchmove', touchMoveEvent);
+                $el.removeEventListener('touchcancel', touchCancelEvent);
+                $el.removeEventListener('touchend', touchEndEvent);
+
+                if ($el.$$touchObj && !$el.$$touchObj.options.disableClick) {
+                    $el.removeEventListener('mousedown', touchStartEvent);
+                    $el.removeEventListener('mousemove', touchMoveEvent);
+                    $el.removeEventListener('mouseup', touchEndEvent);
+                    $el.removeEventListener('mouseenter', mouseEnterEvent);
+                    $el.removeEventListener('mouseleave', mouseLeaveEvent);
+                }
+
+                // remove vars
+                delete $el.$$touchObj;
+            }
+        });
+
+        Vue.directive('touch-class', {
+            bind: function ($el, binding) {
+                buildTouchObj($el, {
+                    touchClass: binding.value
+                });
+            }
+        });
+
+        Vue.directive('touch-options', {
+            bind: function($el, binding) {
+                buildTouchObj($el, binding.value);
+            }
+        });
+    }
+};
+
+
+/*
+ * Exports
+ */
+if (true) {
+    module.exports = vueTouchEvents;
+
+} else {}
+
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -55897,6 +56293,12 @@ window.App = window.App || {};
  */
 
 window.Moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/**
+ *  Swipe Events
+ */
+
+window.Vue2TouchEvents = __webpack_require__(/*! vue2-touch-events */ "./node_modules/vue2-touch-events/index.js");
+Vue.use(Vue2TouchEvents);
 /**
  * Scroll To
  */

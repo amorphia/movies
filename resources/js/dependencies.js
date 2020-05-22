@@ -48,6 +48,15 @@ window.App = window.App || {};
 window.Moment = require('moment');
 
 /**
+ *  Swipe Events
+ */
+
+window.Vue2TouchEvents = require('vue2-touch-events');
+
+Vue.use( Vue2TouchEvents );
+
+
+/**
  * Scroll To
  */
 

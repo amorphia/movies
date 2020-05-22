@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "moment": "^2.26.0",
-        "vue-scrollto": "^2.18.1"
+        "vue-scrollto": "^2.18.1",
+        "vue2-touch-events": "^2.2.1"
     }
 }

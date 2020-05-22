@@ -1,5 +1,5 @@
 <template>
-<div class="movie-display">
+<div class="movie-display" v-touch:swipe="swipeHandler">
 
     <nav class='hover-nav left-hover-nav' v-if="shared.movies.hasOwnProperty( shared.currentYear + 1 )">
         <div class='hover-arrow pos-absolute-center left-hover-arrow' @click="setYear( shared.currentYear + 1 )">
@@ -77,6 +77,23 @@
         },
 
         methods : {
+
+            swipeHandler( direction ){
+                let newYear;
+
+                if( direction === 'left' ){
+                    newYear = this.shared.currentYear - 1;
+                }
+
+                if( direction === 'right'){
+                    newYear = this.shared.currentYear + 1;
+                }
+
+                if( newYear && this.shared.movies.hasOwnProperty( newYear ) ){
+                    this.setYear( newYear );
+                }
+
+            },
 
             setMovieSeen( movie ){
                 this.shared.seenTotal++;
