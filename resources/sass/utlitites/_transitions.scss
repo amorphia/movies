@@ -8,8 +8,7 @@
 
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: .75;
 }
 
 /**
@@ -33,32 +32,59 @@
     slide directions
 **/
 
+//v-enter: Starting state for enter. Added before element is inserted, removed one frame after element is inserted.
 
-.left-enter-active, .left-leave-active {
-    transition: transform .3s;
+//v-enter-active: Active state for enter. Applied during the entire entering phase. Added before element is inserted, removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve for the entering transition.
+
+//v-enter-to: Only available in versions 2.1.8+. Ending state for enter. Added one frame after element is inserted (at the same time v-enter is removed), removed when transition/animation finishes.
+
+//v-leave: Starting state for leave. Added immediately when a leaving transition is triggered, removed after one frame.
+
+//v-leave-active: Active state for leave. Applied during the entire leaving phase. Added immediately when leave transition is triggered, removed when the transition/animation finishes. This class can be used to define the duration, delay and easing curve for the leaving transition.
+
+//v-leave-to: Only available in versions 2.1.8+. Ending state for leave. Added one frame after a leaving transition is triggered (at the same time v-leave is removed), removed when the transition/animation finishes.
+
+
+.left-enter, .left-leave, .left-enter-active, .left-leave-active {
+    transition: transform .2s linear;
 }
 
 .left-enter {
-    transform: translateX(-100%);
+    transform: translateX(100%);
+}
+
+.left-enter-to, .left-leave {
+    transform: translateX(0);
 }
 
 .left-leave-to {
     transform: translateX(-100%);
 }
 
+.left-enter-active {
+    transition-delay: .1s;
+}
 
-.right-enter-active, .right-leave-active {
-    transition: transform .3s;
+
+.right-enter, .right-leave, .right-enter-active, .right-leave-active {
+    transition: transform .2s linear;
 }
 
 .right-enter {
-    transform: translateX(100%);
+    transform: translateX(-100%);
+}
+
+.right-enter-to, .right-leave {
+    transform: translateX(0);
 }
 
 .right-leave-to {
     transform: translateX(100%);
 }
 
+.right-enter-active {
+    transition-delay: .1s;
+}
 
 /**
     Slide Down

@@ -42040,7 +42040,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "transition-group",
-        { attrs: { name: _vm.swipeDirection, tag: "div" } },
+        { attrs: { name: "fade", tag: "div" } },
         _vm._l(_vm.shared.movies, function(data, year) {
           return year == _vm.shared.currentYear
             ? _c("div", { key: data.key }, [
@@ -56318,7 +56318,7 @@ window.Moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.
 
 window.Vue2TouchEvents = __webpack_require__(/*! vue2-touch-events */ "./node_modules/vue2-touch-events/index.js");
 Vue.use(Vue2TouchEvents, {
-  swipeTolerance: 100
+  swipeTolerance: 75
 });
 /**
  * Scroll To

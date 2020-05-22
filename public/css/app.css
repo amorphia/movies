@@ -1335,8 +1335,7 @@ a {
 
 .fade-enter,
 .fade-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 0.75;
 }
 
 /**
@@ -1360,30 +1359,52 @@ a {
     slide directions
 **/
 
+.left-enter,
+.left-leave,
 .left-enter-active,
 .left-leave-active {
-  transition: transform 0.3s;
+  transition: transform 0.2s linear;
 }
 
 .left-enter {
-  transform: translateX(-100%);
+  transform: translateX(100%);
+}
+
+.left-enter-to,
+.left-leave {
+  transform: translateX(0);
 }
 
 .left-leave-to {
   transform: translateX(-100%);
 }
 
+.left-enter-active {
+  transition-delay: 0.1s;
+}
+
+.right-enter,
+.right-leave,
 .right-enter-active,
 .right-leave-active {
-  transition: transform 0.3s;
+  transition: transform 0.2s linear;
 }
 
 .right-enter {
-  transform: translateX(100%);
+  transform: translateX(-100%);
+}
+
+.right-enter-to,
+.right-leave {
+  transform: translateX(0);
 }
 
 .right-leave-to {
   transform: translateX(100%);
+}
+
+.right-enter-active {
+  transition-delay: 0.1s;
 }
 
 /**
