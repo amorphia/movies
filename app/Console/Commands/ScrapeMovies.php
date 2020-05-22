@@ -40,8 +40,6 @@ class ScrapeMovies extends Command
     {
         $year = $this->argument('year') ?? null;
         $message = $scraper->updateNewMovies( $year );
-        $message .= PHP_EOL;
-        $message .= $scraper->updateMovieGross( $year );
         $this->info( $message );
     }
 }
