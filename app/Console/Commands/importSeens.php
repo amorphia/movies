@@ -52,14 +52,9 @@ class importSeens extends Command
 
             $movie = Movie::where( 'title', 'like', "{$title}%" )->where( 'year', $seen->year )->first();
 
-            if( $movie ){
-                $user->setMovieSeen( $movie );
-            } else {
-                $this->error("No match for {$seen->title} - {$seen->year}");
+            if( !$movie )
+                $this->error("{$seen->title} - {$seen->year}");
             }
-
-        }
-
-
+        
     }
 }
