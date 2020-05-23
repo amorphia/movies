@@ -51,13 +51,15 @@ class importSeens extends Command
 
         foreach( $seens as $seen ){
 
-            $movie = Movie::where( 'title', $seen->title )->where( 'year', $seen->year )->first();
+            $title = explode( '(', $seen->title );
+            $title = trim( $title[0] );
+
+            $movie = Movie::where( 'title', 'like', "{$title}%" )->where( 'year', $seen->year )->first();
 
             if( $movie ){
                 $user->setMovieSeen( $movie );
-                $this->info("Imported {$seen->title} - {$seen->year}");
             } else {
-                $this->error("No match for {$seen->title} - {$seen->year}");
+                $this->error("No match for {$movie->title} - {$seen->year}");
             }
 
             // display output
