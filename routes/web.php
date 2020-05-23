@@ -51,4 +51,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post( '/movies/fetch', 'MovieController@index' );
 Route::post( '/movies/search', 'MovieController@search' );
 Route::get( '/movies/recent', 'MovieController@recent' );
+Route::delete( '/movie/{movie}', 'MovieController@destroy' );
 Route::post( '/movie/{movie}/toggle', 'MovieController@toggle' );

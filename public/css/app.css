@@ -1640,6 +1640,7 @@ body.landing {
   position: relative;
   transition: background-color 0.4s;
   overflow: hidden;
+  align-items: center;
 }
 
 @media (max-width: 767px) {
@@ -1693,6 +1694,12 @@ body.landing {
   right: 0;
   font-size: 7rem;
   margin-top: 0.5rem;
+}
+
+.movie .movie-list__delete {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  z-index: 6;
 }
 
 .movie-wrap:not(.active) .flash {

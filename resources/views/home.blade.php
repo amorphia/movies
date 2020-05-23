@@ -7,6 +7,8 @@
             'min' : {{ $min }}
         };
 
+        App.user = {{ $user->id  }}
+
         App.seenTotal = {{ $seen_total }};
     </script>
 @endpush

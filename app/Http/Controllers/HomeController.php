@@ -28,7 +28,8 @@ class HomeController extends Controller
         $min = Movie::min( 'year' );
 
         $seen_total = auth()->user()->seenTotal();
+        $user = auth()->user();
 
-        return view( 'home', compact( 'max', 'min', 'seen_total' ) );
+        return view( 'home', compact( 'max', 'min', 'seen_total', 'user' ) );
     }
 }

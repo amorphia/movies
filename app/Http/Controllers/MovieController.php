@@ -36,6 +36,7 @@ class MovieController extends Controller
                     ->whereIn( 'year', $request->years )
                     ->leftJoin('movie_user', 'movies.id', '=', 'movie_user.movie_id')
                     ->select('movies.*', 'movie_user.active', 'movie_user.created_at AS seen_at')
+                    ->where( 'movies.active', 1 )
                     ->orderBy( 'gross', 'desc' )
                     ->orderBy( 'rank', 'asc' )
                     ->get();
@@ -64,6 +65,7 @@ class MovieController extends Controller
         if( ! $request->searchTerm ) return;
 
         $movies = Movie::where( 'title', 'like', "%{$request->searchTerm}%" )
+                    ->where( 'active' , 1 )
                     ->take( 10 )
                     ->orderBy( 'gross', 'desc' )
                     ->get();
@@ -141,6 +143,6 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->update([ 'active' => 0 ]);
     }
 }

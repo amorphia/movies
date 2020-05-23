@@ -1993,16 +1993,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
     return {
       shared: App.state,
       bufferYears: 2,
-      swipeDirection: ''
+      swipeDirection: '',
+      admin: false,
+      editMode: false
     };
   },
   created: function created() {
+    if (App.user === 1) {
+      this.admin = true;
+    }
+
     this.shared.init('currentYear', App.years.max);
     this.initMovieTree();
     this.setYear(App.years.max);
@@ -2010,6 +2017,22 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   },
   computed: {},
   methods: {
+    deleteMovie: function deleteMovie(movie) {
+      var _this = this;
+
+      if (!confirm("Delete ".concat(movie.title, "?"))) return;
+      App.event.event('working');
+      axios["delete"]("/movie/".concat(movie.id)).then(function (response) {
+        console.log(response.data);
+        _this.shared.movies[_this.shared.currentYear].movies = _this.shared.movies[_this.shared.currentYear].movies.filter(function (item) {
+          return item.id != movie.id;
+        });
+      })["catch"](function (errors) {
+        return console.log(errors);
+      }).then(function () {
+        return App.event.event('done');
+      });
+    },
     seenInYear: function seenInYear(year) {
       if (!this.shared.movies || !this.shared.movies[year].movies) return 0;
       var filtered = this.shared.movies[year].movies.filter(function (item) {
@@ -2131,22 +2154,22 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       element.classList.add("flash");
     },
     loadYears: function loadYears(years, movie) {
-      var _this = this;
+      var _this2 = this;
 
       App.event.event('working');
       axios.post('/movies/fetch', {
         years: years
       }).then(function (response) {
         for (var year in response.data) {
-          _this.shared.movies[year].movies = response.data[year];
+          _this2.shared.movies[year].movies = response.data[year];
         }
 
         if (movie) {
           Vue.nextTick(function () {
-            _this.scrollTo("movie-".concat(movie.id));
+            _this2.scrollTo("movie-".concat(movie.id));
           });
         } else {
-          _this.scrollTo('top');
+          _this2.scrollTo('top');
         }
       })["catch"](function (errors) {
         return console.log(errors);
@@ -42064,7 +42087,12 @@ var render = function() {
                     [
                       _c("span", {
                         staticClass: "year-wrap__title",
-                        domProps: { textContent: _vm._s(year) }
+                        domProps: { textContent: _vm._s(year) },
+                        on: {
+                          click: function($event) {
+                            _vm.editMode = !_vm.editMode
+                          }
+                        }
                       }),
                       _vm._v(" "),
                       _c("span", { staticClass: "year-wrap__seen" }, [
@@ -42125,7 +42153,19 @@ var render = function() {
                                   movie.title,
                                 target: "_blank"
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.admin && _vm.editMode
+                              ? _c("i", {
+                                  staticClass:
+                                    "icon-x movie-list__delete pointer",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteMovie(movie)
+                                    }
+                                  }
+                                })
+                              : _vm._e()
                           ]
                         )
                       ]

@@ -70,7 +70,7 @@
     position: relative;
     transition: background-color .4s;
     overflow:hidden;
-
+    align-items: center;
 
     @include mobile {
         box-shadow: none;
@@ -126,6 +126,13 @@
         @include mobile{
         }
     }
+
+    .movie-list__delete {
+        color: rgba(0,0,0,.5);
+        font-size: 1.5rem;
+        z-index: 6;
+    }
+
 }
 
 .movie-wrap:not(.active) .flash {
