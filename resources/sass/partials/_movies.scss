@@ -126,13 +126,19 @@
         @include mobile{
         }
     }
-
-    &.flash {
-        animation: flash 1.5s ease-out;
-        animation-iteration-count: 1;
-    }
-
 }
+
+.movie-wrap:not(.active) .flash {
+    animation: unseenflash 1.5s ease-out;
+    animation-iteration-count: 1;
+}
+
+.movie-wrap.active .flash {
+    animation: seenflash 1.5s ease-out;
+    animation-iteration-count: 1;
+}
+
+
 
 .movie-wrap.active .movie {
     background-color: rgb(244,244,244);

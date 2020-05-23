@@ -278,7 +278,35 @@ a {
   }
 }
 
-@-webkit-keyframes flash {
+@-webkit-keyframes seenflash {
+  0% {
+    background-color: #f4f4f4;
+  }
+
+  20% {
+    background-color: #FF6;
+  }
+
+  100% {
+    background-color: #f4f4f4;
+  }
+}
+
+@keyframes seenflash {
+  0% {
+    background-color: #f4f4f4;
+  }
+
+  20% {
+    background-color: #FF6;
+  }
+
+  100% {
+    background-color: #f4f4f4;
+  }
+}
+
+@-webkit-keyframes unseenflash {
   0% {
     background-color: var(--primary-color);
   }
@@ -292,7 +320,7 @@ a {
   }
 }
 
-@keyframes flash {
+@keyframes unseenflash {
   0% {
     background-color: var(--primary-color);
   }
@@ -1667,9 +1695,16 @@ body.landing {
   margin-top: 0.5rem;
 }
 
-.movie.flash {
-  -webkit-animation: flash 1.5s ease-out;
-          animation: flash 1.5s ease-out;
+.movie-wrap:not(.active) .flash {
+  -webkit-animation: unseenflash 1.5s ease-out;
+          animation: unseenflash 1.5s ease-out;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.movie-wrap.active .flash {
+  -webkit-animation: seenflash 1.5s ease-out;
+          animation: seenflash 1.5s ease-out;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
 }
