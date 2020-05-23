@@ -1965,6 +1965,12 @@ body.landing {
   }
 }
 
+.autocomplete__item span {
+  font-family: var(--secondary-font);
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
 :root {
   font-size: 1vw;
 }

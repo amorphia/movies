@@ -2221,7 +2221,17 @@ __webpack_require__.r(__webpack_exports__);
       search();
     }, 200);
   },
+  computed: {},
   methods: {
+    searchTitle: function searchTitle(movie) {
+      console.log(movie);
+
+      if (movie.title.match(/\([0-9]{4}\)/)) {
+        return movie.title;
+      } else {
+        return "".concat(movie.title, " <span>(").concat(movie.year, ")</span>");
+      }
+    },
     setSearchOpen: function setSearchOpen() {
       var _this2 = this;
 
@@ -42249,7 +42259,7 @@ var render = function() {
                   return _c("div", {
                     staticClass: "autocomplete__item ellipses",
                     class: { selected: _vm.selectedItem === index },
-                    domProps: { textContent: _vm._s(movie.title) },
+                    domProps: { innerHTML: _vm._s(_vm.searchTitle(movie)) },
                     on: {
                       click: function($event) {
                         return _vm.jumpToMovie(movie)

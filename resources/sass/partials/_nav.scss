@@ -212,4 +212,10 @@
     @include mobile {
         font-size: 1.8rem;
     }
+
+    span {
+        font-family: var(--secondary-font);
+        font-size: .8em;
+        opacity: .7;
+    }
 }

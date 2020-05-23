@@ -21,7 +21,7 @@
                 <div v-for="( movie, index ) in results"
                      class="autocomplete__item ellipses"
                      :class="{ selected : selectedItem === index }"
-                     v-text="movie.title"
+                     v-html="searchTitle( movie )"
                      @click="jumpToMovie( movie )"
                     ></div>
             </div>
@@ -55,7 +55,23 @@
 
         },
 
+        computed : {
+
+
+
+
+        },
+
         methods : {
+
+            searchTitle( movie ){
+                console.log( movie );
+                if( movie.title.match( /\([0-9]{4}\)/ ) ){
+                    return movie.title;
+                } else {
+                    return `${movie.title} <span>(${movie.year})</span>`;
+                }
+            },
 
             setSearchOpen(){
                 this.openSearch = true;
