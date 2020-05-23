@@ -59,7 +59,7 @@ class ScrapeMovies extends Command
         foreach( $year_array as $year ){
             $this->scrapeYear( $year );
         }
-        
+
     }
 
     protected function scrapeYear( $year )
