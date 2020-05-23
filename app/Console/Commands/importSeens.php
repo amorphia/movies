@@ -45,10 +45,6 @@ class importSeens extends Command
         $seens = DB::table( 'seens' )->get();
         $user = User::where( 'email', 'jeremy@jeremykalgreen.com' )->first();
 
-        // start progress bar
-        $bar = $this->output->createProgressBar( $seens->count() );
-        $bar->start();
-
         foreach( $seens as $seen ){
 
             $title = explode( '(', $seen->title );
@@ -62,12 +58,8 @@ class importSeens extends Command
                 $this->error("No match for {$movie->title} - {$seen->year}");
             }
 
-            // display output
-            $bar->advance();
         }
 
-        // stop progress bar
-        $bar->finish();
 
     }
 }
