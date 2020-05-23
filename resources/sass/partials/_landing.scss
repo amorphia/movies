@@ -40,6 +40,8 @@ body.landing {
     font-family: var(--accent-font);
     background-color: tomato;
     padding: .75rem 1rem .5rem 1rem;
+    font-size: 2rem;
+    text-align: center;
 
     @include mobile {
         font-size: 2.5rem;

@@ -27,41 +27,49 @@
 }
 
 .icon-menu:before {
-  content: "\E90B";
+    content: "\E90B";
 }
 .icon-recent:before {
-  content: "\E909";
+    content: "\E909";
 }
 .icon-home:before {
-  content: "\E90A";
+    content: "\E90A";
 }
-.icon-year:before {
-  content: "\E907";
+.icon-checkbox-checked:before {
+    content: "\EA52";
+}
+.icon-checkbox-unchecked:before {
+    content: "\EA53";
 }
 .icon-show:before {
-  content: "\E905";
+    content: "\E905";
 }
 .icon-user:before {
-  content: "\E906";
+    content: "\E906";
 }
 .icon-search:before {
-  content: "\E904";
+    content: "\E904";
 }
 .icon-star:before {
-  content: "\E903";
+    content: "\E903";
 }
 .icon-link:before {
-  content: "\E902";
+    content: "\E902";
 }
 .icon-x:before {
-  content: "\E908";
+    content: "\E908";
 }
 .icon-right:before {
-  content: "\E901";
+    content: "\E901";
 }
 .icon-left:before {
-  content: "\E900";
+    content: "\E900";
 }
+.icon-year:before {
+    content: "\E907";
+}
+@charset "UTF-8";
+
 /* Box sizing rules */
 
 *,
@@ -1258,56 +1266,75 @@ a {
   width: 100%;
 }
 
-.landing .form-label {
+.landing .form-label,
+.landing .col-form-label {
   width: 100%;
-  margin-bottom: 10px;
-  color: rgba(0, 0, 0, 0.7);
+  display: block;
+  margin-bottom: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-family: var(--accent-font);
+  text-transform: uppercase;
 }
 
-.landing .form-element {
+.landing .form-label.icon-checkbox,
+.landing .col-form-label.icon-checkbox {
+  width: auto;
+}
+
+.landing .form-element,
+.landing .form-control {
   width: 100%;
-  padding: 1.5vw;
-  margin: 0.5vw 0 1vw;
+  padding: 0.75rem;
+  margin: 0.25rem 0;
   line-height: 1.25;
   background-color: rgba(255, 255, 255, 0.25);
   border: none;
-  font-size: 2vw;
+  font-size: 1.5rem;
   color: white;
   font-family: var(--accent-font);
   letter-spacing: 2px;
 }
 
-.landing .form-element::-webkit-input-placeholder {
+.landing .form-element::-webkit-input-placeholder, .landing .form-control::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.65);
+  font-family: var(--accent-font);
 }
 
-.landing .form-element::-moz-placeholder {
+.landing .form-element::-moz-placeholder, .landing .form-control::-moz-placeholder {
   color: rgba(255, 255, 255, 0.65);
+  font-family: var(--accent-font);
 }
 
-.landing .form-element:-ms-input-placeholder {
+.landing .form-element:-ms-input-placeholder, .landing .form-control:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.65);
+  font-family: var(--accent-font);
 }
 
-.landing .form-element::-ms-input-placeholder {
+.landing .form-element::-ms-input-placeholder, .landing .form-control::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.65);
+  font-family: var(--accent-font);
 }
 
-.landing .form-element::placeholder {
+.landing .form-element::placeholder,
+.landing .form-control::placeholder {
   color: rgba(255, 255, 255, 0.65);
+  font-family: var(--accent-font);
 }
 
-.landing .form-error {
+.landing .form-error,
+.landing .invalid-feedback {
   font-size: 0.8em;
   color: red;
   font-weight: normal;
   letter-spacing: 2px;
 }
 
-.landing .form-submit {
+.landing .form-submit,
+.landing button[type=submit] {
   width: 100%;
-  padding: 1.5vw;
-  margin: 0.5vw 0 1vw;
+  padding: 0.75rem;
+  margin: 0.5rem 0 1rem;
   line-height: 1.25;
   text-transform: uppercase;
   background-color: var(--primary-color);
@@ -1315,13 +1342,21 @@ a {
   font-family: var(--accent-font);
   transition: background-color 0.2s;
   border-radius: 3px;
-  font-size: 2vw;
+  font-size: 1.5rem;
   cursor: pointer;
   letter-spacing: 2px;
 }
 
 .landing [required] {
   scroll-margin-top: 10rem;
+}
+
+.landing input[type=checkbox] + label:before {
+  content: "\EA53";
+}
+
+.landing input[type=checkbox]:checked + label:before {
+  content: "\EA52";
 }
 
 /**
@@ -1486,6 +1521,8 @@ body.landing {
   font-family: var(--accent-font);
   background-color: tomato;
   padding: 0.75rem 1rem 0.5rem 1rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -1941,5 +1978,20 @@ body.landing {
 body {
   background-color: var(--near-white);
   font-family: var(--primary-font);
+}
+
+.alert {
+  font-size: 1.2rem;
+  padding: 1rem;
+  background-color: tomato;
+  margin: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  font-family: var(--secondary-font);
+}
+
+.alert-success {
+  background-color: tomato;
 }
 

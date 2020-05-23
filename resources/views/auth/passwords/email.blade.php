@@ -1,11 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.landing')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+@section('main')
+
+    <div class="splash__buttons p-5 width-40 pull-center">
 
                 <div class="card-body">
                     @if (session('status'))
@@ -41,7 +38,5 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
 @endsection

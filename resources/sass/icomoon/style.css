@@ -27,38 +27,44 @@
 }
 
 .icon-menu:before {
-  content: "\e90b";
+    content: "\e90b";
 }
 .icon-recent:before {
-  content: "\e909";
+    content: "\e909";
 }
 .icon-home:before {
-  content: "\e90a";
+    content: "\e90a";
 }
-.icon-year:before {
-  content: "\e907";
+.icon-checkbox-checked:before {
+    content: "\ea52";
+}
+.icon-checkbox-unchecked:before {
+    content: "\ea53";
 }
 .icon-show:before {
-  content: "\e905";
+    content: "\e905";
 }
 .icon-user:before {
-  content: "\e906";
+    content: "\e906";
 }
 .icon-search:before {
-  content: "\e904";
+    content: "\e904";
 }
 .icon-star:before {
-  content: "\e903";
+    content: "\e903";
 }
 .icon-link:before {
-  content: "\e902";
+    content: "\e902";
 }
 .icon-x:before {
-  content: "\e908";
+    content: "\e908";
 }
 .icon-right:before {
-  content: "\e901";
+    content: "\e901";
 }
 .icon-left:before {
-  content: "\e900";
+    content: "\e900";
+}
+.icon-year:before {
+    content: "\e907";
 }
