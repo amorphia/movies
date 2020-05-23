@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MovieDisplay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MovieDisplay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/NavMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NavMenu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Scraper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +186,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589867483837</updated>
       <workItem from="1589867485596" duration="5616000" />
-      <workItem from="1590013224845" duration="90015000" />
+      <workItem from="1590013224845" duration="90284000" />
     </task>
     <servers />
   </component>
