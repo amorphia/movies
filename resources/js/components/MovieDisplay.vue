@@ -27,7 +27,7 @@
                 <div v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
                     <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
                         <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
-                        <a title='IMDB Link' :href="`https://google.com/search?q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
+                        <a title='IMDB Link' :href="`https://google.com/search?tbm=isch&q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
                     </div>
                 </div>
 

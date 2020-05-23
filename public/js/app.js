@@ -42109,7 +42109,7 @@ var render = function() {
                               attrs: {
                                 title: "IMDB Link",
                                 href:
-                                  "https://google.com/search?q=imdb " +
+                                  "https://google.com/search?tbm=isch&q=imdb " +
                                   movie.year +
                                   " " +
                                   movie.title,
