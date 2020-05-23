@@ -17,7 +17,7 @@
 
             <div class='year-wrap width-100'>
                 <div class="year-wrap__content d-flex align-center justify-between">
-                    <span class='year-wrap__title' v-text="year" @click="editMode = !editMode"></span>
+                    <span class='year-wrap__title' v-text="year"></span>
                     <span class='year-wrap__seen'>No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></span>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
                         <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
                         <a title='IMDB Link' :href="`https://google.com/search?tbm=isch&q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
-                        <i v-if="admin && editMode" @click="deleteMovie( movie )" class="icon-x movie-list__delete pointer"></i>
+                        <i v-if="admin && shared.editMode" @click="deleteMovie( movie )" class="icon-x movie-list__delete pointer"></i>
                     </div>
                 </div>
 
@@ -50,7 +50,6 @@
                 bufferYears : 2,
                 swipeDirection : '',
                 admin : false,
-                editMode : false,
             };
         },
 
@@ -60,6 +59,8 @@
             }
 
             this.shared.init( 'currentYear',  App.years.max );
+
+
             this.initMovieTree();
             this.setYear( App.years.max );
             App.event.on( 'setYear', this.setYear );

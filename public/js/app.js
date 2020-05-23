@@ -2001,8 +2001,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       shared: App.state,
       bufferYears: 2,
       swipeDirection: '',
-      admin: false,
-      editMode: false
+      admin: false
     };
   },
   created: function created() {
@@ -2395,6 +2394,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.shared.init('filter', 'all');
     this.shared.init('seenTotal', App.seenTotal);
+    this.shared.init('editMode', false);
     this.loadRecentMovies();
   },
   methods: {
@@ -42087,12 +42087,7 @@ var render = function() {
                     [
                       _c("span", {
                         staticClass: "year-wrap__title",
-                        domProps: { textContent: _vm._s(year) },
-                        on: {
-                          click: function($event) {
-                            _vm.editMode = !_vm.editMode
-                          }
-                        }
+                        domProps: { textContent: _vm._s(year) }
                       }),
                       _vm._v(" "),
                       _c("span", { staticClass: "year-wrap__seen" }, [
@@ -42155,7 +42150,7 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _vm.admin && _vm.editMode
+                            _vm.admin && _vm.shared.editMode
                               ? _c("i", {
                                   staticClass:
                                     "icon-x movie-list__delete pointer",
@@ -42478,7 +42473,12 @@ var render = function() {
           _vm._v(" "),
           _c("div", {
             staticClass: "total-movies nav__item",
-            domProps: { textContent: _vm._s(_vm.shared.seenTotal) }
+            domProps: { textContent: _vm._s(_vm.shared.seenTotal) },
+            on: {
+              click: function($event) {
+                _vm.shared.editMode = !_vm.shared.editMode
+              }
+            }
           })
         ],
         1

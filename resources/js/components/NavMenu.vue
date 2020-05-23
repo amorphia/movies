@@ -41,7 +41,7 @@
             </select>
         </div>
 
-        <div class="total-movies nav__item" v-text="shared.seenTotal"></div>
+        <div class="total-movies nav__item" v-text="shared.seenTotal" @click="shared.editMode = !shared.editMode"></div>
     </nav>
 </div>
 </template>
@@ -64,6 +64,7 @@
         created(){
             this.shared.init( 'filter', 'all' );
             this.shared.init( 'seenTotal', App.seenTotal );
+            this.shared.init( 'editMode', false );
             this.loadRecentMovies();
         },
 
