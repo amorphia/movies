@@ -61,7 +61,7 @@ class Scraper
         $title = $node->children('.mojo-field-type-release')->text();
         $release = $node->children('.mojo-field-type-date')->eq(0)->text();
 
-        $theaters = $node->children('.mojo-field-type-positive_integer')->eq(1)->text();
+        $theaters = $node->children('.mojo-field-type-positive_integer')->eq(0)->text();
         $theaters= (int)preg_replace("/[^0-9]/", "", $theaters);
 
         $gross = $node->children('.mojo-field-type-money')->eq(1)->text();

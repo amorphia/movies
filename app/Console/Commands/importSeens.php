@@ -55,6 +55,6 @@ class importSeens extends Command
             if( !$movie )
                 $this->error("{$seen->title} - {$seen->year}");
             }
-        
+
     }
 }
