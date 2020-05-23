@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+use App\Movie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,23 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function(){
 
+    $seens = DB::table( 'seens' )->get();
+
+    $set = [];
+
+    foreach( $seens as $seen ){
+        $movie = Movie::where( 'title', $seen->title )->where( 'year', $seen->year )->get();
+        if( !$movie ){
+            auth()->user()->setMovieSeen( $movie );
+            $set[] = $seen;
+        }
+    }
+
+    return $set;
+
+});
 
 // Landing
 Route::get('/', 'LandingController@index' );
