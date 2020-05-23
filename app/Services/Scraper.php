@@ -61,7 +61,7 @@ class Scraper
         $title = $node->children('.mojo-field-type-release')->text();
         $title = strip_accents( $title );
         $release = $node->children('.mojo-field-type-date')->eq(0)->text();
-        
+
 
         $theaters = $node->children('.mojo-field-type-positive_integer')->eq(0)->text();
         $theaters= (int)preg_replace("/[^0-9]/", "", $theaters);

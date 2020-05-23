@@ -2,11 +2,15 @@
 
 namespace App\Console\Commands;
 
+use App\Movie;
 use Illuminate\Console\Command;
 use App\Services\Scraper;
 
 class ScrapeMovies extends Command
 {
+
+    protected $scraper;
+
     /**
      * The name and signature of the console command.
      *
@@ -38,8 +42,29 @@ class ScrapeMovies extends Command
      */
     public function handle( Scraper $scraper )
     {
-        $year = $this->argument('year') ?? null;
-        $message = $scraper->updateNewMovies( $year );
+        $this->scraper = $scraper;
+        $year_array = [];
+
+        if( $this->argument('year') ){
+            $year_array[] = $this->argument('year');
+        } else {
+            $min = Movie::min( 'year' );
+            $max = Movie::max( 'year' );
+
+            for( $i = $min; $i <= $max; $i++ ){
+                $year_array[] = $i;
+            }
+        }
+
+        foreach( $year_array as $year ){
+            $this->scrapeYear( $year );
+        }
+        
+    }
+
+    protected function scrapeYear( $year )
+    {
+        $message = $this->scraper->updateNewMovies( $year );
         $this->info( $message );
     }
 }

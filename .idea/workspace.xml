@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/ScrapeMovies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/ScrapeMovies.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Scraper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589867483837</updated>
       <workItem from="1589867485596" duration="5616000" />
-      <workItem from="1590013224845" duration="86403000" />
+      <workItem from="1590013224845" duration="86840000" />
     </task>
     <servers />
   </component>
@@ -195,10 +195,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590207508470">
+    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590218847153">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590207508470" />
+    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590218847153" />
     <state x="567" y="232" key="NewPhpClassDialog" timestamp="1590207662743">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
