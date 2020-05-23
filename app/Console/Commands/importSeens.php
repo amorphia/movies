@@ -42,7 +42,7 @@ class importSeens extends Command
     {
         $this->info("Starting Import");
 
-        $seens = DB::table( 'seens' )->get();
+        $seens = DB::table( 'seens' )->orderBy( 'year', 'desc' )->get();
         $user = User::where( 'email', 'jeremy@jeremykalgreen.com' )->first();
 
         foreach( $seens as $seen ){
@@ -52,7 +52,7 @@ class importSeens extends Command
 
             $movie = Movie::where( 'title', 'like', "{$title}%" )->where( 'year', $seen->year )->first();
 
-            if( gettype( $movie ) === 'object' && is_a( $movie, 'Movie' ) ){
+            if( $movie ){
                 $user->setMovieSeen( $movie );
             } else {
                 $this->error("No match for {$seen->title} - {$seen->year}");
