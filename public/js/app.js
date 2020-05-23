@@ -42109,7 +42109,7 @@ var render = function() {
                               attrs: {
                                 title: "IMDB Link",
                                 href:
-                                  "https://duckduckgo.com/?q=\\imdb " +
+                                  "https://google.com/?q=imdb " +
                                   movie.year +
                                   " " +
                                   movie.title,
