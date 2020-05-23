@@ -55,7 +55,7 @@ class importSeens extends Command
             if( gettype( $movie ) === 'object' && is_a( $movie, 'Movie' ) ){
                 $user->setMovieSeen( $movie );
             } else {
-                $this->error("No match for {$movie->title} - {$seen->year}");
+                $this->error("No match for {$seen->title} - {$seen->year}");
             }
 
         }
