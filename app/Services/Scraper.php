@@ -72,7 +72,7 @@ class Scraper
         $timestamp = new \DateTime();
 
         // filter out da junk
-        if( $rank > 300
+        if( $rank > 500
             || $node->filter( 'span.a-size-small' )->count() > 0
             || $theaters < 35  ) return;
 
