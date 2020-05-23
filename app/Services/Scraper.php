@@ -149,7 +149,7 @@ class Scraper
         // filter out da junk
         if( $rank > 400
             || stripos( $title, 'Re-release') !== false
-            || $theaters < 25  ) return;
+            || $theaters < 20  ) return;
 
         // return the movie array
         return [
