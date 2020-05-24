@@ -2009,6 +2009,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
@@ -42186,85 +42187,96 @@ var render = function() {
                   0
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "year-wrap width-100" }, [
-                  _c(
-                    "div",
-                    { staticClass: "year-wrap__content d-flex align-center" },
-                    [
-                      _vm._v(
-                        "\n                    STREAMING\n                "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "section",
-                  {
-                    staticClass: "movie-list width-100 pos-relative",
-                    class: _vm.shared.filter
-                  },
-                  _vm._l(data.movies, function(movie, index) {
-                    return movie.type === "streaming"
-                      ? _c(
-                          "div",
-                          {
-                            staticClass: "movie-wrap",
-                            class: { active: movie.active }
-                          },
-                          [
+                _vm.shared.currentYear >= 2015
+                  ? _c("div", [
+                      _vm.shared.currentYear >= 2015
+                        ? _c("div", { staticClass: "year-wrap width-100" }, [
                             _c(
                               "div",
                               {
-                                staticClass: "movie",
-                                attrs: {
-                                  id: "movie-" + movie.id,
-                                  "data-rank": index + 1
-                                }
+                                staticClass:
+                                  "year-wrap__content d-flex align-center"
                               },
                               [
-                                _c("div", {
-                                  staticClass: "pad-buffer movie__title",
-                                  domProps: { innerHTML: _vm._s(movie.title) },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.toggleMovie(movie)
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("a", {
-                                  staticClass: "movie__link icon-link",
-                                  attrs: {
-                                    title: "IMDB Link",
-                                    href:
-                                      "https://google.com/search?tbm=isch&q=imdb " +
-                                      movie.year +
-                                      " " +
-                                      movie.title,
-                                    target: "_blank"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm.admin && _vm.shared.editMode
-                                  ? _c("i", {
-                                      staticClass:
-                                        "icon-x movie-list__delete pointer",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.deleteMovie(movie)
-                                        }
-                                      }
-                                    })
-                                  : _vm._e()
+                                _vm._v(
+                                  "\n                        STREAMING\n                    "
+                                )
                               ]
                             )
-                          ]
-                        )
-                      : _vm._e()
-                  }),
-                  0
-                )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "section",
+                        {
+                          staticClass: "movie-list width-100 pos-relative",
+                          class: _vm.shared.filter
+                        },
+                        _vm._l(data.movies, function(movie, index) {
+                          return movie.type === "streaming"
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "movie-wrap",
+                                  class: { active: movie.active }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "movie",
+                                      attrs: {
+                                        id: "movie-" + movie.id,
+                                        "data-rank": index + 1
+                                      }
+                                    },
+                                    [
+                                      _c("div", {
+                                        staticClass: "pad-buffer movie__title",
+                                        domProps: {
+                                          innerHTML: _vm._s(movie.title)
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.toggleMovie(movie)
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("a", {
+                                        staticClass: "movie__link icon-link",
+                                        attrs: {
+                                          title: "IMDB Link",
+                                          href:
+                                            "https://google.com/search?tbm=isch&q=imdb " +
+                                            movie.year +
+                                            " " +
+                                            movie.title,
+                                          target: "_blank"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.admin && _vm.shared.editMode
+                                        ? _c("i", {
+                                            staticClass:
+                                              "icon-x movie-list__delete pointer",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteMovie(movie)
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e()
               ])
             : _vm._e()
         }),

@@ -32,22 +32,23 @@
                     </div>
                 </section>
 
-                <div class='year-wrap width-100'>
-                    <div class="year-wrap__content d-flex align-center">
-                        STREAMING
-                    </div>
-                </div>
-
-                <section class="movie-list width-100 pos-relative" :class="shared.filter">
-                    <div v-if="movie.type === 'streaming'" v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
-                        <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
-                            <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
-                            <a title='IMDB Link' :href="`https://google.com/search?tbm=isch&q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
-                            <i v-if="admin && shared.editMode" @click="deleteMovie( movie )" class="icon-x movie-list__delete pointer"></i>
+                <div v-if="shared.currentYear >= 2015">
+                    <div class='year-wrap width-100' v-if="shared.currentYear >= 2015">
+                        <div class="year-wrap__content d-flex align-center">
+                            STREAMING
                         </div>
                     </div>
-                </section>
 
+                    <section class="movie-list width-100 pos-relative" :class="shared.filter">
+                        <div v-if="movie.type === 'streaming'" v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
+                            <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
+                                <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
+                                <a title='IMDB Link' :href="`https://google.com/search?tbm=isch&q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
+                                <i v-if="admin && shared.editMode" @click="deleteMovie( movie )" class="icon-x movie-list__delete pointer"></i>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
         </transition-group>
     </div>

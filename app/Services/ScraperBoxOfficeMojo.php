@@ -27,7 +27,7 @@ class ScraperBoxOfficeMojo extends ScraperAbstract
     {
         // get our new movies
         $movies = $this->newMoviesArray( $year );
-        $this->console->question( "New Movies:" . PHP_EOL );
+        $this->console->line( "New Movies:" . PHP_EOL );
 
         // grab out existing movies
         $existing_movies = Movie::where( 'year', $year )->pluck( 'title' )->toArray();
@@ -95,7 +95,7 @@ class ScraperBoxOfficeMojo extends ScraperAbstract
     public function updateMovieGross( $year )
     {
 
-        $this->console->question( PHP_EOL . "Updated Grosses:" . PHP_EOL );
+        $this->console->line( PHP_EOL . "Updated Grosses:" . PHP_EOL );
 
         // get an array of movie grosses for the year
         $movies_gross = $this->moviesGrossArray( $year );
