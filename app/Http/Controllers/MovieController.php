@@ -118,6 +118,8 @@ class MovieController extends Controller
             'type' => 'in:theater,streaming'
         ]);
 
+        $validated['gross'] = (int)preg_replace("/[^0-9]/", "", $validated['gross'] );
+
         $movie = Movie::create( $validated );
 
         if( $request->seen ){
