@@ -42159,10 +42159,11 @@ var render = function() {
                                   attrs: {
                                     title: "IMDB Link",
                                     href:
-                                      "https://google.com/search?tbm=isch&q=imdb " +
+                                      "https://google.com/search?q=imdb " +
                                       movie.year +
                                       " " +
-                                      movie.title,
+                                      movie.title +
+                                      "&btnI",
                                     target: "_blank"
                                   }
                                 }),
@@ -42248,10 +42249,11 @@ var render = function() {
                                         attrs: {
                                           title: "IMDB Link",
                                           href:
-                                            "https://google.com/search?tbm=isch&q=imdb " +
+                                            "https://google.com/search?q=imdb " +
                                             movie.year +
                                             " " +
-                                            movie.title,
+                                            movie.title +
+                                            "&btnI",
                                           target: "_blank"
                                         }
                                       }),

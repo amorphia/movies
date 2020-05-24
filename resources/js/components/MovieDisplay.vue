@@ -26,7 +26,7 @@
                     <div v-if="movie.type === 'theater'" v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
                         <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
                             <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
-                            <a title='IMDB Link' :href="`https://google.com/search?tbm=isch&q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
+                            <a title='IMDB Link' :href="`https://google.com/search?q=imdb ${movie.year} ${movie.title}&btnI`" target='_blank' class='movie__link icon-link'></a>
                             <i v-if="admin && shared.editMode" @click="deleteMovie( movie )" class="icon-x movie-list__delete pointer"></i>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div v-if="movie.type === 'streaming'" v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
                             <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">
                                 <div class='pad-buffer movie__title' v-html="movie.title" @click="toggleMovie( movie )"></div>
-                                <a title='IMDB Link' :href="`https://google.com/search?tbm=isch&q=imdb ${movie.year} ${movie.title}`" target='_blank' class='movie__link icon-link'></a>
+                                <a title='IMDB Link' :href="`https://google.com/search?q=imdb ${movie.year} ${movie.title}&btnI`" target='_blank' class='movie__link icon-link'></a>
                                 <i v-if="admin && shared.editMode" @click="deleteMovie( movie )" class="icon-x movie-list__delete pointer"></i>
                             </div>
                         </div>
