@@ -29,7 +29,7 @@ class Scraper
         foreach( $movies as $movie ){
 
             if( !in_array( $movie['title'], $existingMovies ) ){
-                DB::table( 'movies' )->insertOrIgnore( $movies );
+                DB::table( 'movies' )->insertOrIgnore( $movie );
                 $message .= $movie['title'] . PHP_EOL;
             }
         }
@@ -145,11 +145,6 @@ class Scraper
         $gross = $node->children('.mojo-field-type-money')->eq(2)->text();
         $gross = (int)preg_replace("/[^0-9]/", "", $gross );
 
-
-        // filter out da junk
-        if( $rank > 400
-            || stripos( $title, 'Re-release') !== false
-            || $theaters < 20  ) return;
 
         // return the movie array
         return [
