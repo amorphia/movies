@@ -51,7 +51,7 @@ class DataFiddle extends Command
 
             if( $count === 1 ){
                 $this->info( "Updating to {$title}" );
-                //$movie->update([ 'title' => $title ]);
+                $movie->update([ 'title' => $title ]);
             }
         }
     }
