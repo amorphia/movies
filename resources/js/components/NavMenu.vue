@@ -5,7 +5,7 @@
             <i class="recent-movies__close icon-x" @click="recentOpen = false"></i>
             <div class="recent-movies__content d-flex flex-wrap width-100">
                 <div v-for="(movie, index) in shared.recentMovies" class="recent-movies__item">
-                    <div class='margin'><span>{{ index + 1 }}</span>{{ movie.title }}</div>
+                    <div class='margin' v-html="`<span>${index + 1 }</span>${movie.title}`"></div>
                 </div>
             </div>
         </div>

@@ -43569,10 +43569,14 @@ var render = function() {
                 },
                 _vm._l(_vm.shared.recentMovies, function(movie, index) {
                   return _c("div", { staticClass: "recent-movies__item" }, [
-                    _c("div", { staticClass: "margin" }, [
-                      _c("span", [_vm._v(_vm._s(index + 1))]),
-                      _vm._v(_vm._s(movie.title))
-                    ])
+                    _c("div", {
+                      staticClass: "margin",
+                      domProps: {
+                        innerHTML: _vm._s(
+                          "<span>" + (index + 1) + "</span>" + movie.title
+                        )
+                      }
+                    })
                   ])
                 }),
                 0
