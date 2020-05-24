@@ -41,40 +41,19 @@ class DataFiddle extends Command
     public function handle()
     {
 
-        $seens = DB::table( 'seens' )->where('matched', 0 )->get();
+        $movies = Movie::where('title', 'like', '%Re-release' )->get();
 
-        foreach( $seens as $seen ) {
+        foreach( $movies as $movie ) {
 
-            $this->info( "$seen->title - $seen->year" );
+            $this->line( "Checking {$movie->title}");
+            $title = trim( str_ireplace( ['re-release', $movie->year ], '', $movie->title ) );
+            $count = Movie::where( 'title', 'like', "{$title}%" )->count();
 
-            /*
-            $hash = $this->getHash( $seen->title );
-            $movie = DB::table( 'numbers' )
-                ->where('hash', $hash )
-                ->where( 'year', $seen->year )
-                ->first();
-            if( $movie ){
-
-                DB::table( 'movie_user' )->insertOrIgnore([
-                    'movie_id' => $movie->id,
-                    'user_id' => 1,
-                    'active' => 1
-                ]);
-
-                DB::table( 'seens' )
-                    ->where( 'id', $seen->id )
-                    ->update( ['matched'=> 1] );
-
-                $this->info("{$seen->title} ({$seen->year}) matched {$movie->title} ({$movie->year})" );
+            if( $count === 1 ){
+                $this->info( "Updating to {$title}" );
+                //$movie->update([ 'title' => $title ]);
             }
-*/
         }
-    }
-
-    protected function getHash( $string )
-    {
-        $string = strtolower( str_replace( '&', 'and', $string ) );
-        return preg_replace("/[^A-Za-z0-9]/", '', $string );
     }
 
 }
