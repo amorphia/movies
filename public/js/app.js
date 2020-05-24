@@ -2434,6 +2434,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
@@ -43192,15 +43193,31 @@ var render = function() {
                         domProps: { textContent: _vm._s(year) }
                       }),
                       _vm._v(" "),
-                      _c("span", { staticClass: "year-wrap__seen" }, [
-                        _vm._v("No. Watched "),
-                        _c("span", {
-                          staticClass: "year-wrap__seen-number",
-                          domProps: {
-                            textContent: _vm._s(_vm.seenInYear(year))
-                          }
-                        })
-                      ])
+                      _vm.admin
+                        ? _c("span", { staticClass: "year-wrap__seen" }, [
+                            _c("a", { attrs: { href: "\\new" } }, [
+                              _vm._v("No. Watched "),
+                              _c("span", {
+                                staticClass: "year-wrap__seen-number",
+                                domProps: {
+                                  textContent: _vm._s(_vm.seenInYear(year))
+                                }
+                              })
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.admin
+                        ? _c("span", { staticClass: "year-wrap__seen" }, [
+                            _vm._v("No. Watched "),
+                            _c("span", {
+                              staticClass: "year-wrap__seen-number",
+                              domProps: {
+                                textContent: _vm._s(_vm.seenInYear(year))
+                              }
+                            })
+                          ])
+                        : _vm._e()
                     ]
                   )
                 ]),

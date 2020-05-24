@@ -18,7 +18,8 @@
                 <div class='year-wrap width-100'>
                     <div class="year-wrap__content d-flex align-center justify-between">
                         <span class='year-wrap__title' v-text="year"></span>
-                        <span class='year-wrap__seen'>No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></span>
+                        <span v-if="admin" class='year-wrap__seen'><a href="\new">No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></a></span>
+                        <span v-if="!admin" class='year-wrap__seen'>No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></span>
                     </div>
                 </div>
 
