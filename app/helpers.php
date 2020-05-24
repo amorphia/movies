@@ -32,3 +32,7 @@ function get_match( $regex, $string )
         }
     }
 }
+
+function checkAdmin(){
+    if( auth()->user()->id != config( 'app.my_id' ) ) abort('404' );
+}

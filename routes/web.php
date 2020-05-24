@@ -14,23 +14,7 @@ use App\Movie;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', function(){
 
-    $seens = DB::table( 'seens' )->get();
-
-    $set = [];
-
-    foreach( $seens as $seen ){
-        $movie = Movie::where( 'title', $seen->title )->where( 'year', $seen->year )->get();
-        if( !$movie ){
-            auth()->user()->setMovieSeen( $movie );
-            $set[] = $seen;
-        }
-    }
-
-    return $set;
-
-});
 
 // Landing
 Route::get('/', 'LandingController@index' );
@@ -48,8 +32,10 @@ Route::get( '/admin/csrf', 'CsrfController@csrf' )->name( 'csrf' );
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Movies
+Route::get( '/new', 'MovieController@create' );
 Route::post( '/movies/fetch', 'MovieController@index' );
 Route::post( '/movies/search', 'MovieController@search' );
 Route::get( '/movies/recent', 'MovieController@recent' );
+Route::post( '/movie', 'MovieController@store' );
 Route::delete( '/movie/{movie}', 'MovieController@destroy' );
 Route::post( '/movie/{movie}/toggle', 'MovieController@toggle' );

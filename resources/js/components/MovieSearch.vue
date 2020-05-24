@@ -65,7 +65,6 @@
         methods : {
 
             searchTitle( movie ){
-                console.log( movie );
                 if( movie.title.match( /\([0-9]{4}\)/ ) ){
                     return movie.title;
                 } else {

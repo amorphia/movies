@@ -130,7 +130,7 @@ export default class Form {
     reset() {
 
         for ( let field in this.originalData ) {
-            this[field].value = '';
+            this[field].value = this.originalData[field].value;
         }
 
         this.errors.clearAll();

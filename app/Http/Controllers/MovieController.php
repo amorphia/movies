@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class MovieController extends Controller
 {
@@ -71,7 +72,12 @@ class MovieController extends Controller
                     ->orderBy( 'gross', 'desc' )
                     ->get();
 
-        return $movies->count() ? $movies : [[ "title" => "No Results", "year" => date( "y") ]];
+        if( $movies->count() ){
+            return $movies;
+        }
+
+        $no_results_content = auth()->user()->id !== 1 ? "No Results" : "<a href='/new'>No Results</a>";
+        return $movies->count() ? $movies : [[ "title" => $no_results_content, "year" => date( "y") ]];
     }
 
 
@@ -88,7 +94,9 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        checkAdmin();
+
+        return view( 'movies.create' );
     }
 
     /**
@@ -99,7 +107,22 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        checkAdmin();
+
+        $validated = $request->validate([
+            'title' => Rule::unique('movies' )->where( function ( $query ) use ( $request ) {
+                return $query->where( 'year', $request->year );
+            }),
+            'year' => 'required|digits:4|integer|min:1930|max:' . (date('Y') + 1 ),
+            'gross' => 'nullable',
+            'type' => 'in:theater,streaming'
+        ]);
+
+        $movie = Movie::create( $validated );
+
+        if( $request->seen ){
+            auth()->user()->setMovieSeen( $movie );
+        }
     }
 
     /**
@@ -110,7 +133,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+
     }
 
     /**
@@ -121,7 +144,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        checkAdmin();
     }
 
     /**
@@ -133,7 +156,7 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        checkAdmin();
     }
 
     /**
@@ -144,6 +167,8 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
+        checkAdmin();
+
         $movie->update([ 'active' => 0 ]);
     }
 }
