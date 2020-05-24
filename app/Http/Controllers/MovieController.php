@@ -39,6 +39,7 @@ class MovieController extends Controller
                     ->where( 'movies.active', 1 )
                     ->orderBy( 'gross', 'desc' )
                     ->orderBy( 'rank', 'asc' )
+                    ->orderBy( 'title' )
                     ->get();
 
         $movies = $movies->groupBy( 'year' );

@@ -12,3 +12,23 @@ function strip_accents( $string )
     return strtr( $string, $unwanted_array );
 
 }
+
+
+function remove_bs( $string )
+{
+    $string = strip_accents( $string );
+    return preg_replace('/[^(\x20-\x7F)\x0A\x0D]*/','', $string );
+}
+
+
+function get_match( $regex, $string )
+{
+    $result =  preg_match( "/{$regex}/i", $string, $matches );
+    if( $result ){
+        if( isset( $matches[1] ) ){
+            return $matches[1];
+        } else {
+            return $matches[0];
+        }
+    }
+}

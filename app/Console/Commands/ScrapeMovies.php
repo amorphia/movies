@@ -64,8 +64,6 @@ class ScrapeMovies extends Command
 
     protected function scrapeYear( $year )
     {
-        $message = $this->scraper->updateNewMovies( $year );
-        $this->scraper->updateMovieGross( $year );
-        $this->info( $message );
+        $this->scraper->scrape( $year, $this );
     }
 }

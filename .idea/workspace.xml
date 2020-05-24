@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="" />
+    <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/ScrapeMovies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/ScrapeMovies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Scraper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/MovieDisplay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MovieDisplay.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,14 +200,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590218847153">
+    <state x="523" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590285294697">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590218847153" />
-    <state x="567" y="232" key="NewPhpClassDialog" timestamp="1590207662743">
+    <state x="523" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1590285294697" />
+    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590295859754">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="567" y="232" key="NewPhpClassDialog/0.0.1536.834@0.0.1536.834" timestamp="1590207662743" />
+    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590295859754" />
+    <state x="567" y="232" key="NewPhpClassDialog" timestamp="1590285306796">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="567" y="232" key="NewPhpClassDialog/0.0.1536.834@0.0.1536.834" timestamp="1590285306796" />
     <state x="604" y="341" key="NewPhpFileDialog" timestamp="1590016708474">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
