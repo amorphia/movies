@@ -58305,12 +58305,21 @@ window.Moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.
  */
 
 window.Vue2TouchEvents = __webpack_require__(/*! vue2-touch-events */ "./node_modules/vue2-touch-events/index.js");
-Vue.use(Vue2TouchEvents, {
-  swipeTolerance: 75
-});
+
+window.isTouchDevice = function isTouchDevice() {
+  return 'ontouchstart' in window // works on most browsers
+  || navigator.maxTouchPoints; // works on IE10/11 and Surface
+};
+
+if (isTouchDevice()) {
+  Vue.use(Vue2TouchEvents, {
+    swipeTolerance: 100
+  });
+}
 /**
  * Scroll To
  */
+
 
 window.VueScrollTo = __webpack_require__(/*! vue-scrollto */ "./node_modules/vue-scrollto/vue-scrollto.js"); // You can also pass in the default options
 

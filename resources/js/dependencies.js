@@ -53,9 +53,16 @@ window.Moment = require('moment');
 
 window.Vue2TouchEvents = require('vue2-touch-events');
 
-Vue.use( Vue2TouchEvents, {
-    swipeTolerance: 75,
-})
+window.isTouchDevice = function isTouchDevice() {
+    return 'ontouchstart' in window        // works on most browsers
+        || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+};
+
+if( isTouchDevice() ){
+    Vue.use( Vue2TouchEvents, {
+        swipeTolerance: 100,
+    })
+}
 
 
 /**
