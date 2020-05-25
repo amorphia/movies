@@ -1,0 +1,121 @@
+.movie-wrap {
+    width: 25%;
+    padding: .8rem;
+
+    @include mobile {
+        width: 100%;
+        padding: .5rem;
+    }
+}
+
+.movie {
+    width: 100%;
+    padding: 1.2rem .9rem 1.2rem 2.8rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    background-color: var(--primary-color);
+    display: flex;
+    color: white;
+    position: relative;
+    transition: background-color .4s;
+    overflow:hidden;
+    align-items: center;
+
+    &.placeholder {
+        box-shadow: none;
+    }
+
+    @include mobile {
+        box-shadow: none;
+        padding: 1.2rem .9rem 1.2rem 3.4rem;
+    }
+
+    .movie__title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        z-index: 2;
+        font-family: var(--secondary-font);
+        letter-spacing: 1px;
+        padding: .5rem 0;
+        font-size: 1.2rem;
+        cursor: pointer;
+
+        @include mobile{
+        }
+    }
+
+    .movie__link {
+        color: #FB9380;
+        position: absolute;
+        font-size: 1.2rem;
+        padding: .5rem;
+        left: 0;
+        background-color: rgba(0,0,0,.1);
+        height: 100%;
+        top: 0;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+            padding: .5rem .75rem;
+        }
+    }
+
+    &:after{
+        content: attr( data-rank );
+        color: rgba(0, 0, 0, 0.09);
+        font-family: var(--accent-font);
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        transform: translateY(-50%);
+        padding: 0;
+        right: 0;
+        font-size: 7rem;
+        margin-top: .5rem;
+
+        @include mobile{
+        }
+    }
+
+    .movie-list__delete {
+        color: rgba(0,0,0,.5);
+        font-size: 1.5rem;
+        z-index: 6;
+    }
+
+}
+
+.movie-wrap:not(.active) .flash {
+    animation: unseenflash 1.5s ease-out;
+    animation-iteration-count: 1;
+}
+
+.movie-wrap.active .flash {
+    animation: seenflash 1.5s ease-out;
+    animation-iteration-count: 1;
+}
+
+
+
+.movie-wrap.active .movie {
+    background-color: rgb(244,244,244);
+
+    .movie__title {
+        color: #525151;
+    }
+
+    .movie__link{
+        color: white;
+    }
+}
+
+
+.movie-list.unseen .movie-wrap.active {
+    display: none;
+}
+
+.movie-list.seen .movie-wrap:not( .active ) {
+    display: none;
+}

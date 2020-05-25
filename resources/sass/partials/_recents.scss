@@ -1,0 +1,78 @@
+
+.recent-movies {
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--highlight-color);
+    padding: 2rem 6rem 2rem 6rem;
+    z-index: 501;
+    font-size: 1.5rem;
+
+    @include mobile {
+        padding: 2.5rem;
+    }
+}
+
+.recent-movies__content {
+    overflow-y: auto;
+    max-height: 90vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.recent-movies__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    color: var(--light-yellow);
+
+    @include mobile {
+        top: .6rem;
+        right: .6rem;
+    }
+}
+
+.recent-movies__item {
+    width: 25%;
+    padding: .5rem;
+    z-index: 2;
+
+    @include mobile {
+        width: 100%;
+    }
+
+    .margin {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-family: var(--secondary-font);
+        letter-spacing: 1px;
+        transition: all .3s;
+        background-color: rgb(255, 185, 51);
+        text-align: left;
+        color: white;
+        font-size: 1.3rem;
+        padding: 1rem;
+    }
+
+    span {
+        color: #F7FDA4;
+        font-family: var(--accent-font);
+        font-size: 1.5rem;
+        margin-right: .5rem;
+    }
+}
+
+
+.recent-headline {
+    padding: 1rem .5rem;
+    font-family: var(--accent-font);
+    color: var(--light-yellow);
+    letter-spacing: 2px;
+    font-size: 2.25rem;
+}

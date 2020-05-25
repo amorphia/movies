@@ -2833,6 +2833,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'nav-menu',
@@ -43633,6 +43634,10 @@ var render = function() {
                   }
                 }
               }),
+              _vm._v(" "),
+              _c("h2", { staticClass: "recent-headline" }, [
+                _vm._v("Most Recently Seen")
+              ]),
               _vm._v(" "),
               _c(
                 "div",

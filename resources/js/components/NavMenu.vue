@@ -3,6 +3,7 @@
     <transition name="slide">
         <div v-if="recentOpen" class="recent-movies pos-fixed width-100">
             <i class="recent-movies__close icon-x" @click="recentOpen = false"></i>
+            <h2 class="recent-headline">Most Recently Seen</h2>
             <div class="recent-movies__content d-flex flex-wrap width-100">
                 <div v-for="(movie, index) in shared.recentMovies" class="recent-movies__item">
                     <div class='margin' v-html="`<span>${index + 1 }</span>${movie.title}`"></div>
