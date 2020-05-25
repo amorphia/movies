@@ -1,6 +1,6 @@
 
 .movie-display {
-    padding: 7.8rem 2rem 1.5rem ;
+    padding: 7.8rem 2.5rem 1.5rem ;
 
     @include mobile {
         padding: 6.4rem .1rem .75rem;
@@ -13,7 +13,7 @@
 }
 
 .year-wrap {
-    padding: .5rem;
+    padding: .75rem;
 }
 
 .year-wrap__content {
@@ -175,7 +175,7 @@
 .hover-nav {
     pointer-events: initial;
     position: fixed;
-    width: 3%;
+    width: 2.5rem;
     top: 0;
     bottom: 0;
     left: 0;
@@ -203,11 +203,11 @@
         cursor:pointer;
         animation: ripple 1s ease-in infinite;
         font-size: 3vw;
-        left: 75%;
+        left: 50%;
     }
 
     &.right-hover-nav .hover-arrow {
-            left: 25%;
+            left: 50%;
     }
 
 

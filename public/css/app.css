@@ -1565,7 +1565,7 @@ body.landing {
 }
 
 .movie-display {
-  padding: 7.8rem 2rem 1.5rem;
+  padding: 7.8rem 2.5rem 1.5rem;
 }
 
 @media (max-width: 767px) {
@@ -1580,7 +1580,7 @@ body.landing {
 }
 
 .year-wrap {
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .year-wrap__content {
@@ -1743,7 +1743,7 @@ body.landing {
 .hover-nav {
   pointer-events: initial;
   position: fixed;
-  width: 3%;
+  width: 2.5rem;
   top: 0;
   bottom: 0;
   left: 0;
@@ -1775,11 +1775,11 @@ body.landing {
   -webkit-animation: ripple 1s ease-in infinite;
           animation: ripple 1s ease-in infinite;
   font-size: 3vw;
-  left: 75%;
+  left: 50%;
 }
 
 .hover-nav.right-hover-nav .hover-arrow {
-  left: 25%;
+  left: 50%;
 }
 
 .hover-nav:hover .hover-arrow {
@@ -1789,7 +1789,7 @@ body.landing {
 .nav {
   top: 0;
   z-index: 7;
-  padding: 1.2rem 1.8rem;
+  padding: 1.2rem 2.8rem;
   background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.01);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
