@@ -1623,7 +1623,6 @@ body.landing {
   margin-right: auto;
   margin-left: 1rem;
   font-size: 1.1rem;
-  display: flex;
   color: var(--off-white);
 }
 

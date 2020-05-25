@@ -2451,6 +2451,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
@@ -43214,17 +43218,18 @@ var render = function() {
                         _c(
                           "a",
                           {
-                            staticClass: "pointer",
+                            staticClass: "pointer d-flex",
                             on: {
                               click: function($event) {
                                 return _vm.scrollTo("streaming")
                               }
                             }
                           },
-                          [_vm._v("streaming")]
-                        ),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "ml-2 icon-right" })
+                          [
+                            _vm._v("streaming\n                            "),
+                            _c("i", { staticClass: "ml-2 icon-right" })
+                          ]
+                        )
                       ]),
                       _vm._v(" "),
                       _vm.admin
@@ -43366,17 +43371,22 @@ var render = function() {
                                     _c(
                                       "a",
                                       {
-                                        staticClass: "pointer",
+                                        staticClass: "pointer d-flex",
                                         on: {
                                           click: function($event) {
                                             return _vm.scrollTo("top")
                                           }
                                         }
                                       },
-                                      [_vm._v("theatrical")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("i", { staticClass: "ml-2 icon-right" })
+                                      [
+                                        _vm._v(
+                                          "theatrical\n                                "
+                                        ),
+                                        _c("i", {
+                                          staticClass: "ml-2 icon-right"
+                                        })
+                                      ]
+                                    )
                                   ]
                                 )
                               ]
