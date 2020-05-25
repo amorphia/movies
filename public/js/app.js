@@ -2435,6 +2435,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
@@ -43221,6 +43229,25 @@ var render = function() {
                     ]
                   )
                 ]),
+                _vm._v(" "),
+                !data.movies
+                  ? _c(
+                      "section",
+                      { staticClass: "movie-list width-100 pos-relative" },
+                      _vm._l(50, function(n) {
+                        return _c("div", { staticClass: "movie-wrap active" }, [
+                          _c("div", { staticClass: "movie placeholder" }, [
+                            _c(
+                              "div",
+                              { staticClass: "pad-buffer movie__title" },
+                              [_vm._v(" ")]
+                            )
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "section",

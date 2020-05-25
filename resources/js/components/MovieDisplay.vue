@@ -23,6 +23,14 @@
                     </div>
                 </div>
 
+                <section v-if="! data.movies" class="movie-list width-100 pos-relative">
+                    <div v-for="n in 50" class='movie-wrap active'>
+                        <div class="movie placeholder">
+                            <div class='pad-buffer movie__title'>&nbsp;</div>
+                        </div>
+                    </div>
+                </section>
+
                 <section class="movie-list width-100 pos-relative" :class="shared.filter">
                     <div v-if="movie.type === 'theater'" v-for="(movie, index) in data.movies" class='movie-wrap' :class="{ active : movie.active }">
                         <div class="movie" :id="`movie-${movie.id}`" :data-rank="index + 1">

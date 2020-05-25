@@ -1643,6 +1643,10 @@ body.landing {
   align-items: center;
 }
 
+.movie.placeholder {
+  box-shadow: none;
+}
+
 @media (max-width: 767px) {
   .movie {
     box-shadow: none;

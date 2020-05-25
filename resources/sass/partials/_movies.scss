@@ -72,6 +72,10 @@
     overflow:hidden;
     align-items: center;
 
+    &.placeholder {
+        box-shadow: none;
+    }
+
     @include mobile {
         box-shadow: none;
         padding: 1.2rem .9rem 1.2rem 3.4rem;
