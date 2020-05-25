@@ -1618,6 +1618,14 @@ body.landing {
   font-size: 2rem;
 }
 
+.year-wrap__jump-link {
+  margin-right: auto;
+  margin-left: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  color: var(--off-white);
+}
+
 .movie-wrap {
   width: 25%;
   padding: 0.8rem;

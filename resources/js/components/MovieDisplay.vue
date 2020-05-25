@@ -18,6 +18,10 @@
                 <div class='year-wrap width-100'>
                     <div class="year-wrap__content d-flex align-center justify-between">
                         <span class='year-wrap__title' v-text="year"></span>
+                        <span class="year-wrap__jump-link">
+                            <a class="pointer" @click="scrollTo( 'streaming' )">streaming</a>
+                            <i class="ml-2 icon-right"></i>
+                        </span>
                         <span v-if="admin" class='year-wrap__seen'><a href="\new">No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></a></span>
                         <span v-if="!admin" class='year-wrap__seen'>No. Watched <span class='year-wrap__seen-number' v-text="seenInYear( year )"></span></span>
                     </div>
@@ -43,8 +47,12 @@
 
                 <div v-if="shared.currentYear >= 2015">
                     <div class='year-wrap width-100' v-if="shared.currentYear >= 2015">
-                        <div class="year-wrap__content d-flex align-center">
+                        <div id="streaming" class="year-wrap__content d-flex align-center">
                             STREAMING
+                            <span class="year-wrap__jump-link">
+                                <a class="pointer" @click="scrollTo( 'top' )">theatrical</a>
+                                <i class="ml-2 icon-right"></i>
+                            </span>
                         </div>
                     </div>
 

@@ -2443,6 +2443,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'movie-display',
   data: function data() {
@@ -43201,6 +43209,23 @@ var render = function() {
                         domProps: { textContent: _vm._s(year) }
                       }),
                       _vm._v(" "),
+                      _c("span", { staticClass: "year-wrap__jump-link" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "pointer",
+                            on: {
+                              click: function($event) {
+                                return _vm.scrollTo("streaming")
+                              }
+                            }
+                          },
+                          [_vm._v("streaming")]
+                        ),
+                        _vm._v(" "),
+                        _c("i", { staticClass: "ml-2 icon-right" })
+                      ]),
+                      _vm._v(" "),
                       _vm.admin
                         ? _c("span", { staticClass: "year-wrap__seen" }, [
                             _c("a", { attrs: { href: "\\new" } }, [
@@ -43326,11 +43351,32 @@ var render = function() {
                               "div",
                               {
                                 staticClass:
-                                  "year-wrap__content d-flex align-center"
+                                  "year-wrap__content d-flex align-center",
+                                attrs: { id: "streaming" }
                               },
                               [
                                 _vm._v(
-                                  "\n                        STREAMING\n                    "
+                                  "\n                        STREAMING\n                        "
+                                ),
+                                _c(
+                                  "span",
+                                  { staticClass: "year-wrap__jump-link" },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "pointer",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.scrollTo("top")
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("theatrical")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("i", { staticClass: "ml-2 icon-right" })
+                                  ]
                                 )
                               ]
                             )
