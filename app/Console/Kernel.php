@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // post birthdays at
-        $schedule->command( 'scrape:movies' )->dailyAt('3:00' )->emailOutputTo( config( 'mail.me' ) );
+        // scrape moves
+        $command = "scrape:movies " . date( Y );
+        $schedule->command( $command )->dailyAt('3:00' )->emailOutputTo( config( 'mail.me' ) );
     }
 
     /**
