@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // scrape moves
-        $command = "scrape:movies " . date( Y );
-        $schedule->command( $command )->dailyAt('3:00' )->emailOutputTo( config( 'mail.me' ) );
+        $command = "scrape:movies " . date( 'Y' );
+        $schedule->command( $command )->dailyAt('3:00' )->emailOutputTo( config( 'mail.address' ) );
     }
 
     /**

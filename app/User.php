@@ -47,6 +47,12 @@ class User extends Authenticatable
      */
 
 
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+
     public function recentMovies()
     {
         return $this->movies()->orderBy( 'movie_user.created_at', 'desc' )->take( 50 )->get();
