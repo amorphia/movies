@@ -43214,23 +43214,27 @@ var render = function() {
                         domProps: { textContent: _vm._s(year) }
                       }),
                       _vm._v(" "),
-                      _c("span", { staticClass: "year-wrap__jump-link" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "pointer d-flex",
-                            on: {
-                              click: function($event) {
-                                return _vm.scrollTo("streaming")
-                              }
-                            }
-                          },
-                          [
-                            _vm._v("streaming\n                            "),
-                            _c("i", { staticClass: "ml-2 icon-right" })
-                          ]
-                        )
-                      ]),
+                      _vm.shared.currentYear >= 2015
+                        ? _c("span", { staticClass: "year-wrap__jump-link" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "pointer d-flex",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.scrollTo("streaming")
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "streaming\n                            "
+                                ),
+                                _c("i", { staticClass: "ml-2 icon-right" })
+                              ]
+                            )
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
                       _vm.admin
                         ? _c("span", { staticClass: "year-wrap__seen" }, [

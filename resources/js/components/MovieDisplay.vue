@@ -18,7 +18,7 @@
                 <div class='year-wrap width-100'>
                     <div class="year-wrap__content d-flex align-center justify-between">
                         <span class='year-wrap__title' v-text="year"></span>
-                        <span class="year-wrap__jump-link">
+                        <span v-if="shared.currentYear >= 2015" class="year-wrap__jump-link">
                             <a class="pointer d-flex" @click="scrollTo( 'streaming' )">streaming
                                 <i class="ml-2 icon-right"></i>
                             </a>
