@@ -18,6 +18,7 @@
 .recent-movies__content {
     overflow-y: auto;
     max-height: 90vh;
+    padding-bottom: 8rem;
 
     &::-webkit-scrollbar {
         display: none;

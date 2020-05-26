@@ -1962,6 +1962,7 @@ body.landing {
 .recent-movies__content {
   overflow-y: auto;
   max-height: 90vh;
+  padding-bottom: 8rem;
 }
 
 .recent-movies__content::-webkit-scrollbar {
