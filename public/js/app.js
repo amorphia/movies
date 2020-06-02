@@ -2649,7 +2649,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           _this2.scrollTo('top');
         }
       })["catch"](function (errors) {
-        return console.log(errors);
+        // log error
+        console.log("Error status", errors.response.status);
+        console.log("Error data", errors.response.data);
+        console.log("Error headers", errors.response.headers);
       }).then(function () {
         return App.event.event('done');
       });

@@ -254,7 +254,12 @@
                             this.scrollTo( 'top' );
                         }
                     })
-                    .catch( errors => console.log( errors ) )
+                    .catch( errors => {
+                        // log error
+                        console.log( "Error status", errors.response.status );
+                        console.log( "Error data", errors.response.data );
+                        console.log( "Error headers", errors.response.headers );
+                    })
                     .then( () => App.event.event('done' ) );
             }
         },
