@@ -15,7 +15,7 @@ addtoOnLoad( () => {
     }
 
     App.ifCsrf( function () {
-        axios.post( '/visitor/first-touch', {
+        axios.post( '/admin/visitor/first-touch', {
             referrer : App.referrer,
             landing : App.landing,
             gclid : gclid

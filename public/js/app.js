@@ -2472,11 +2472,24 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
     this.shared.init('currentYear', App.years.max);
     this.initMovieTree();
-    this.setYear(App.years.max);
+    this.setYear(this.getStartingYear());
     App.event.on('setYear', this.setYear);
   },
   computed: {},
   methods: {
+    getStartingYear: function getStartingYear() {
+      var year = App.years.max;
+
+      if (window.location.hash) {
+        var tempYear = parseInt(window.location.hash.replace('#', ''));
+
+        if (this.shared.movies.hasOwnProperty(tempYear)) {
+          year = tempYear;
+        }
+      }
+
+      return year;
+    },
     deleteMovie: function deleteMovie(movie) {
       var _this = this;
 
@@ -2575,7 +2588,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       } // if that year doesn't exist, abort
 
 
-      if (!this.shared.movies.hasOwnProperty(year)) return;
+      if (!this.shared.movies.hasOwnProperty(year)) return; // add the year as a hash if its not the current year
+
+      if (year != App.years.max) {
+        window.location.hash = '#' + year;
+      }
+
       var oldYear = this.shared.currentYear;
 
       if (oldYear > year) {
@@ -2589,7 +2607,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var yearsToLoad = [];
       var startYear = year - this.bufferYears;
       var endYear = year + this.bufferYears;
-      console.log("Start: ".concat(startYear, " End: ").concat(endYear));
 
       for (var i = startYear; i <= endYear; i++) {
         // loop through the current year, and the ones before and after and check if there
@@ -58334,6 +58351,8 @@ if (isTouchDevice()) {
   Vue.use(Vue2TouchEvents, {
     swipeTolerance: 100
   });
+} else {
+  Vue.directive('touch', {});
 }
 /**
  * Scroll To

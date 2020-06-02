@@ -62,6 +62,8 @@ if( isTouchDevice() ){
     Vue.use( Vue2TouchEvents, {
         swipeTolerance: 100,
     })
+} else {
+    Vue.directive('touch', {});
 }
 
 

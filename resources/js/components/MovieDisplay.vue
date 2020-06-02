@@ -93,12 +93,25 @@
             }
             this.shared.init( 'currentYear',  App.years.max );
             this.initMovieTree();
-            this.setYear( App.years.max );
+            this.setYear( this.getStartingYear() );
             App.event.on( 'setYear', this.setYear );
         },
         computed : {
         },
         methods : {
+
+            getStartingYear(){
+                let year = App.years.max;
+                if( window.location.hash ){
+                    let tempYear = parseInt( window.location.hash.replace( '#', '' ) );
+                    if( this.shared.movies.hasOwnProperty( tempYear ) ){
+                        year = tempYear;
+                    }
+                }
+
+                return year;
+            },
+
             deleteMovie( movie ){
                 if( ! confirm( `Delete ${movie.title}?` ) ) return;
                 App.event.event('working' );
@@ -110,11 +123,13 @@
                     .catch( errors => console.log( errors ) )
                     .then( () => App.event.event('done' ) );
             },
+
             seenInYear( year ){
                 if( !this.shared.movies || !this.shared.movies[ year ].movies ) return 0;
                 let filtered = this.shared.movies[ year ].movies.filter( item => item.active );
                 return filtered.length;
             },
+
             swipeHandler( direction ){
                 let newYear;
                 if( direction === 'left' ){
@@ -127,6 +142,7 @@
                     this.setYear( newYear );
                 }
             },
+
             setMovieSeen( movie ){
                 this.shared.seenTotal++;
                 this.shared.recentMovies.unshift( movie );
@@ -134,10 +150,12 @@
                     this.shared.recentMovies.pop();
                 }
             },
+
             setMovieUnseen( movie ){
                 this.shared.seenTotal--;
                 this.shared.recentMovies = this.shared.recentMovies.filter( item => item.id !== movie.id );
             },
+
             toggleMovie( movie ){
                 movie.active = !movie.active;
                 if( movie.active ){
@@ -153,6 +171,7 @@
                     .catch( errors => console.log( errors ) )
                     .then( () => App.event.event('done' ) );
             },
+
             initMovieTree(){
                 // build years object
                 let years = {};
@@ -162,29 +181,40 @@
                 // init shared movie tree
                 App.state.init( 'movies', years );
             },
+
             setYear( data ){
                 let year;
                 let movie;
+
                 if( typeof data === 'object' && data !== null){
                     movie = data;
                     year = parseInt( movie.year );
                 } else {
                     year = parseInt( data );
                 }
+
                 // if that year doesn't exist, abort
                 if( !this.shared.movies.hasOwnProperty( year ) ) return;
+
+                // add the year as a hash if its not the current year
+                if( year != App.years.max ){
+                    window.location.hash = '#' + year;
+                }
+                
                 let oldYear = this.shared.currentYear;
                 if( oldYear > year ){
                     this.swipeDirection = 'left';
                 } else {
                     this.swipeDirection = 'right';
                 }
+
                 this.shared.currentYear = year;
+
                 // Lets load the data for the given year, plus a number before and after equal to our buffer, if needed.
                 let yearsToLoad = [];
                 let startYear = year - this.bufferYears;
                 let endYear = year + this.bufferYears;
-                console.log( `Start: ${startYear} End: ${endYear}`);
+
                 for( let i = startYear; i <= endYear; i++ ){
                     // loop through the current year, and the ones before and after and check if there
                     // is a null entry for it in the movies object. If so add it to the list of things to load
@@ -192,6 +222,7 @@
                         yearsToLoad.push( i );
                     }
                 }
+
                 // if we have any years to load, then lets load them
                 if( yearsToLoad.length > 0 ){
                     this.loadYears( yearsToLoad, movie );
@@ -201,11 +232,13 @@
                     this.scrollTo( 'top' );
                 }
             },
+
             scrollTo( id ){
                 let element = document.getElementById( id );
                 this.$scrollTo( element );
                 element.classList.add( "flash" );
             },
+
             loadYears( years, movie ){
                 App.event.event('working' );
                 axios.post( '/movies/fetch', { years : years })
