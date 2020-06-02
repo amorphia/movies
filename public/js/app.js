@@ -3000,8 +3000,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/admin/csrf').then(function (response) {
-        //this.shared.csrf = response.data;
-        _this.shared.csrf = 'terds';
+        _this.shared.csrf = response.data;
       })["catch"](function (errors) {
         console.log(errors);
       });
