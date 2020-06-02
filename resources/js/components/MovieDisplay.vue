@@ -255,10 +255,10 @@
                         }
                     })
                     .catch( errors => {
-                        // log error
-                        console.log( "Error status", errors.response.status );
-                        console.log( "Error data", errors.response.data );
-                        console.log( "Error headers", errors.response.headers );
+                        console.log( "Error", errors );
+                        if( errors.response.status === 419 ){
+                            window.location.reload()
+                        }
                     })
                     .then( () => App.event.event('done' ) );
             }

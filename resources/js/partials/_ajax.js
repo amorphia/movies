@@ -56,10 +56,9 @@ window.App.ajax = new class {
                 } )
                 .catch( error => {
                     // log error
-                    console.log( "Error status", error.response.status );
-                    console.log( "Error data", error.response.data );
-                    console.log( "Error headers", error.response.headers );
-
+                    if( errors.response.status === 419 ){
+                        window.location.reload()
+                    }
                     // notify error
                     App.event.event( 'notify', { message : 'Failed', error : true });
 
