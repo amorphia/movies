@@ -17,7 +17,8 @@
             getCsrf(){
                 axios.get('/admin/csrf' )
                     .then( response => {
-                        this.shared.csrf = response.data;
+                        //this.shared.csrf = response.data;
+                        this.shared.csrf = 'terds';
                     })
                     .catch( errors => {
                         console.log( errors );

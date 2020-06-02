@@ -200,7 +200,7 @@
                 if( year != App.years.max ){
                     window.location.hash = '#' + year;
                 }
-                
+
                 let oldYear = this.shared.currentYear;
                 if( oldYear > year ){
                     this.swipeDirection = 'left';

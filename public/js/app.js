@@ -2996,7 +2996,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/admin/csrf').then(function (response) {
-        _this.shared.csrf = response.data;
+        //this.shared.csrf = response.data;
+        _this.shared.csrf = 'terds';
       })["catch"](function (errors) {
         console.log(errors);
       });
