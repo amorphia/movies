@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MovieDisplay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MovieDisplay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/dependencies.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/dependencies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/partials/_referrer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/partials/_referrer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/partials/_ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/partials/_ajax.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +192,7 @@
       <workItem from="1590556771076" duration="8000" />
       <workItem from="1591062867728" duration="919000" />
       <workItem from="1591063910099" duration="1744000" />
-      <workItem from="1591072012786" duration="3429000" />
+      <workItem from="1591072012786" duration="3882000" />
     </task>
     <servers />
   </component>
