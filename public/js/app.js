@@ -2593,7 +2593,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       if (year != App.years.max) {
         window.location.hash = '#' + year;
       } else {
-        window.location.hash = '';
+        history.pushState("", document.title, window.location.pathname + window.location.search);
       }
 
       var oldYear = this.shared.currentYear;
