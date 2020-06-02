@@ -2592,6 +2592,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       if (year != App.years.max) {
         window.location.hash = '#' + year;
+      } else {
+        window.location.hash = '';
       }
 
       var oldYear = this.shared.currentYear;

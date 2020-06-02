@@ -199,6 +199,8 @@
                 // add the year as a hash if its not the current year
                 if( year != App.years.max ){
                     window.location.hash = '#' + year;
+                } else {
+                    window.location.hash = '';
                 }
 
                 let oldYear = this.shared.currentYear;
