@@ -17,7 +17,9 @@ function strip_accents( $string )
 function remove_bs( $string )
 {
     $string = strip_accents( $string );
-    return preg_replace('/[^(\x20-\x7F)\x0A\x0D]*/','', $string );
+    $string = preg_replace('/\[[^)]+\]/','', $string );
+    $string = preg_replace('/[^(\x20-\x7F)\x0A\x0D]*/','', $string );
+    return trim( $string );
 }
 
 

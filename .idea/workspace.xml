@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/movie-tracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/movie-tracker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MovieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MovieController.php" afterDir="false" />
-    </list>
+    <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +197,7 @@
       <workItem from="1596262017068" duration="655000" />
       <workItem from="1596263062368" duration="52000" />
       <workItem from="1596263285787" duration="23000" />
-      <workItem from="1608956423300" duration="259000" />
+      <workItem from="1608956423300" duration="641000" />
     </task>
     <servers />
   </component>
