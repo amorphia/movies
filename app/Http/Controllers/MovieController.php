@@ -28,9 +28,10 @@ class MovieController extends Controller
      */
     public function index( Request $request )
     {
+
         $request->validate([
             'years' => 'array',
-            'years.*' => 'digits:4|integer|min:1900|max:'.( date('Y') )
+            'years.*' => 'digits:4|integer|min:1900'
         ]);
 
         $movies = DB::table('movies')
