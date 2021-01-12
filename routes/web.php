@@ -1,9 +1,12 @@
 <?php
 
+use App\Services\ScraperNetflix;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use App\Movie;
+use Goutte\Client;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +17,13 @@ use App\Movie;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', function(){
+    $client = new Client();
+    $scraper = new ScraperNetflix();
+    $scraper->handle( null, $client );
+});
+
 
 
 // Landing
