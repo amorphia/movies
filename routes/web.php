@@ -18,13 +18,6 @@ use Goutte\Client;
 |
 */
 
-Route::get('/test', function(){
-    $client = new Client();
-    $scraper = new ScraperNetflix();
-    $scraper->handle( null, $client );
-});
-
-
 
 // Landing
 Route::get('/', 'LandingController@index' );

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Scraper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ScraperNetflix.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ScraperWikipediaDisney.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ScraperWikipediaNetflix.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +212,7 @@
       <workItem from="1596263285787" duration="23000" />
       <workItem from="1608956423300" duration="1450000" />
       <workItem from="1609968437323" duration="230000" />
-      <workItem from="1610420808399" duration="4117000" />
+      <workItem from="1610420808399" duration="4839000" />
     </task>
     <servers />
   </component>
