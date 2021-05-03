@@ -41,7 +41,7 @@ window.App.ajax = new class {
     axios( type, url, data, message, headers ){
 
         // start working slider
-        App.event.event('working');
+        App.event.event( 'working' );
 
         // return an axios call wrapped in a promise
         return new Promise(function( resolve, reject ) {

@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Services/ScraperNetflix.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ScraperWikipediaDisney.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ScraperWikipediaNetflix.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/partials/_ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/partials/_ajax.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +210,12 @@
       <workItem from="1596263285787" duration="23000" />
       <workItem from="1608956423300" duration="1450000" />
       <workItem from="1609968437323" duration="230000" />
-      <workItem from="1610420808399" duration="4839000" />
+      <workItem from="1610420808399" duration="4868000" />
+      <workItem from="1610591173316" duration="11000" />
+      <workItem from="1611120583505" duration="15512000" />
+      <workItem from="1612237569220" duration="165000" />
+      <workItem from="1612336932786" duration="994000" />
+      <workItem from="1619719640042" duration="604000" />
     </task>
     <servers />
   </component>
