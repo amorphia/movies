@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/movie-tracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/movie-tracker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/partials/_ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/partials/_ajax.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +12,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -146,13 +143,13 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Gabes/wp-content/themes/root/roots-master/template-couponPrint.php" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -168,18 +165,6 @@
       <recent name="D:\Websites\movie-tracker\resources\views" />
       <recent name="D:\Websites\movie-tracker" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -216,53 +201,36 @@
       <workItem from="1612237569220" duration="165000" />
       <workItem from="1612336932786" duration="994000" />
       <workItem from="1619719640042" duration="604000" />
+      <workItem from="1620067523106" duration="437000" />
+      <workItem from="1620924731633" duration="48000" />
+      <workItem from="1633588763535" duration="3165000" />
+      <workItem from="1633715083633" duration="665000" />
+      <workItem from="1636051955097" duration="626000" />
+      <workItem from="1636126979542" duration="258000" />
+      <workItem from="1636385528483" duration="14000" />
+      <workItem from="1645674890628" duration="1716000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="523" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590285294697">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="740" y="271" key="FileChooserDialogImpl" timestamp="1633629571256">
+      <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="523" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1590285294697" />
-    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590295859754">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="499" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590295859754" />
-    <state x="567" y="232" key="NewPhpClassDialog" timestamp="1590285306796">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="567" y="232" key="NewPhpClassDialog/0.0.1536.834@0.0.1536.834" timestamp="1590285306796" />
-    <state x="604" y="341" key="NewPhpFileDialog" timestamp="1590304744173">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="604" y="341" key="NewPhpFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1590304744173" />
-    <state x="463" y="149" width="609" height="536" key="find.popup" timestamp="1592019260814">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="463" y="149" width="609" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1592019260814" />
-    <state x="425" y="189" key="run.anything.popup" timestamp="1590305001832">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1590305001832" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590162121192">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590162121192" />
+    <state x="740" y="271" key="FileChooserDialogImpl/0.0.1920.1034@0.0.1920.1034" timestamp="1633629571256" />
   </component>
 </project>
