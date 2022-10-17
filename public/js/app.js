@@ -58332,6 +58332,7 @@ getToken();
  */
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue.config.devtools = true;
 /**
  * Set core app object
  */

@@ -36,6 +36,7 @@ getToken();
  * Import Vue
  */
 window.Vue = require('vue');
+window.Vue.config.devtools = true;
 
 /**
  * Set core app object
