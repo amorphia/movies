@@ -2636,7 +2636,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var _this2 = this;
 
       App.event.event('working');
-      axios.post('https://movies.jeremykalgreen.com/movies/fetch', {
+      axios.post('/movies/fetch', {
         years: years
       }).then(function (response) {
         for (var year in response.data) {

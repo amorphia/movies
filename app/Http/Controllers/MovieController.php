@@ -34,6 +34,7 @@ class MovieController extends Controller
             'years.*' => 'digits:4|integer|min:1900'
         ]);
 
+        /*
         $movies = DB::table('movies')
                     ->whereIn( 'year', $request->years )
                     ->leftJoin('movie_user', 'movies.id', '=', 'movie_user.movie_id')
@@ -43,6 +44,22 @@ class MovieController extends Controller
                     ->orderBy( 'rank', 'asc' )
                     ->orderBy( 'title' )
                     ->get();
+        */
+
+
+        $movies = DB::table('movies')
+            ->whereIn( 'year', $request->years )
+            ->leftJoin('movie_user', function($join){
+                $join->on('movies.id', '=', 'movie_user.movie_id');
+                $join->where('movie_user.user_id', auth()->user()->id);
+            })
+            ->select('movies.*', 'movie_user.active', 'movie_user.created_at AS seen_at')
+            ->where( 'movies.active', 1 )
+            ->orderBy( 'gross', 'desc' )
+            ->orderBy( 'rank', 'asc' )
+            ->orderBy( 'title' )
+            ->get();
+
 
         $movies = $movies->groupBy( 'year' );
 
