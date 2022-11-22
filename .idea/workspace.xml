@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="503f2acd-1254-46ff-800d-51c7700194dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Scraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Scraper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ScraperRottenTomatoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ScraperRottenTomatoes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +210,7 @@
       <workItem from="1655929699147" duration="496000" />
       <workItem from="1666019455720" duration="5408000" />
       <workItem from="1668056841407" duration="26000" />
-      <workItem from="1669091285403" duration="3969000" />
+      <workItem from="1669091285403" duration="4277000" />
     </task>
     <servers />
   </component>

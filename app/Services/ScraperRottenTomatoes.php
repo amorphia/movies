@@ -11,7 +11,7 @@ class ScraperRottenTomatoes extends ScraperAbstract
 {
     protected $client;
     protected $console;
-    protected $url = "https://www.rottentomatoes.com/browse/movies_at_home/sort:newest?page=2";
+    protected $url = "https://www.rottentomatoes.com/browse/movies_at_home/sort:newest?page=5";
     protected $targetYear;
 
 
