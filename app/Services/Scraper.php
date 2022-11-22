@@ -14,11 +14,11 @@ class Scraper
 
     public function __construct( \Goutte\Client $client,
                                  ScraperBoxOfficeMojo $boxOfficeMojo,
-                                 ScraperMovieInsider $movieInsider )
+                                 ScraperRottenTomatoes $rottenTomatoes )
     {
         $this->client = $client;
         $this->scrapers[] = $boxOfficeMojo;
-        $this->scrapers[] = $movieInsider;
+        $this->scrapers[] = $rottenTomatoes;
     }
 
 

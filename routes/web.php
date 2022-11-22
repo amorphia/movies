@@ -1,6 +1,5 @@
 <?php
 
-use App\Services\ScraperNetflix;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
